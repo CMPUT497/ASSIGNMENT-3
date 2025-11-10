@@ -13,16 +13,19 @@ except LookupError:
 
 # setting the API key and initializing the client
 load_dotenv()
-api_key = os.getenv("OPENROUTER_API_KEY")
+# api_key = os.getenv("OPENROUTER_API_KEY")
+api_key = os.getenv("HF_TOKEN")
 if not api_key:
     raise ValueError(
-        "OPENROUTER_API_KEY environment variable not set.\n"
+        "API_KEY environment variable not set.\n"
     )
 client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
+    # base_url="https://openrouter.ai/api/v1",
+    base_url="https://router.huggingface.co/v1",
     api_key=api_key
 )
-model = "deepseek/deepseek-r1-0528-qwen3-8b:free"
+# model = "deepseek/deepseek-r1-0528-qwen3-8b:free"
+model = "moonshotai/Kimi-K2-Instruct-0905"
 
 
 def get_sense_ids(word, pos):
