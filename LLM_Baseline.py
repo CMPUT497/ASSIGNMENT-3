@@ -3,21 +3,26 @@ import nltk
 import pandas as pd
 from nltk.corpus import wordnet as wn
 from openai import OpenAI
+from dotenv import load_dotenv
 
 # Download WordNet if not already downloaded
 try:
     wn.synsets('test')
 except LookupError:
     nltk.download('wordnet')
+
 # setting the API key and initializing the client
-# OpenAI() will automatically read from OPENROUTER_API_KEY environment variable
+load_dotenv()
 api_key = os.getenv("OPENROUTER_API_KEY")
 if not api_key:
     raise ValueError(
         "OPENROUTER_API_KEY environment variable not set.\n"
     )
-client = OpenAI()
-model = "gpt-4o-mini"
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=api_key
+)
+model = "qwen/qwen3-coder:free"
 
 
 def get_sense_ids(word, pos):
@@ -66,6 +71,7 @@ def find_best_matching_word(definition):
 def main():
     # reading the tokens and pos tags from the se13_tokens.tsv file
     df = pd.read_csv("data/se13_tokens.tsv", sep="\t")
+    
     # Filter for only 'instance' type rows
     instance_df = df[df["type"] == "instance"]
     senses_dict = {}
@@ -79,13 +85,23 @@ def main():
         for sense in senses:      
             senses_dict[sense['sense_key']] = sense['definition']
     
+    urdu_projections = {}
     # for each definition in the senses_dict, we will find the best matching word in Urdu using an LLM
-    for definition in senses_dict.values():
-        # using the LLM to find the best matching word in Urdu
+    # and map it to the sense key
+    for sense_key, definition in senses_dict.items():
         best_matching_word = find_best_matching_word(definition)
-        print(best_matching_word)
-        break
+        urdu_projections[sense_key] = best_matching_word
 
+    # Create a DataFrame from the dictionary
+    urdu_df = pd.DataFrame([
+        {'sense_key': sense_key, 'urdu_word': urdu_word}
+        for sense_key, urdu_word in urdu_projections.items()
+    ])
+    
+    # saving the urdu projections in a TSV
+    output_file = "urdu_projections.tsv"
+    urdu_df.to_csv(output_file, sep="\t", index=False)
+    print(f"Saved {len(urdu_projections)} Urdu projections to {output_file}")
 
 if __name__ == "__main__":
     main()
