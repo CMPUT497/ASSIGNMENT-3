@@ -22,7 +22,7 @@ client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=api_key
 )
-model = "qwen/qwen3-coder:free"
+model = "deepseek/deepseek-r1-0528-qwen3-8b:free"
 
 
 def get_sense_ids(word, pos):
@@ -52,19 +52,19 @@ def get_sense_ids(word, pos):
     return sense_info
 
 
-def find_best_matching_word(definition):
+def find_best_matching_word(definitions):
     # using the LLM to find the best matching word in Urdu
     prompt = f"""You are a bilingual lexicon expert.
-    Given a dictionary definition {definition}, produce the single word in Urdu that best matches this definition. 
-    Provide only the Urdu word without explanations! """
+    Given the list of dictionary definitions {definitions}, produce a list of single words in Urdu that best matches each definition in the given definitions list.
+    Provide only the Urdu word in the list of Urdu words without explanations for each definition!
+    Return a list a of Urdu words!"""
     # using the OpenAI API to find the best matching word in Urdu
     response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "user", "content": prompt}
         ],
-        max_tokens=100
-    ) 
+    )
     return response.choices[0].message.content.strip()
 
 
@@ -88,9 +88,20 @@ def main():
     urdu_projections = {}
     # for each definition in the senses_dict, we will find the best matching word in Urdu using an LLM
     # and map it to the sense key
-    for sense_key, definition in senses_dict.items():
-        best_matching_word = find_best_matching_word(definition)
-        urdu_projections[sense_key] = best_matching_word
+    definition_list, key_list = [], []
+    batch_size = 0
+    for index, (sense_key, definition) in enumerate(senses_dict.items()):
+        key_list.append(sense_key)
+        definition_list.append(definition)
+        batch_size += 1
+        # prompt size of 50 definitions per batch
+        if batch_size == 50 or index == len(senses_dict)-1:
+            best_matching_word = find_best_matching_word(definition_list)
+            for i in range(len(key_list)):
+                urdu_projections[key_list[i]] = best_matching_word[i]
+            definition_list, key_list = [], []
+            batch_size = 0
+        
 
     # Create a DataFrame from the dictionary
     urdu_df = pd.DataFrame([
@@ -102,6 +113,7 @@ def main():
     output_file = "urdu_projections.tsv"
     urdu_df.to_csv(output_file, sep="\t", index=False)
     print(f"Saved {len(urdu_projections)} Urdu projections to {output_file}")
+
 
 if __name__ == "__main__":
     main()
