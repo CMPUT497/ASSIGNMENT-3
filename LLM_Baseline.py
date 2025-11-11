@@ -83,12 +83,12 @@ def get_sense_ids(word, pos):
     return sense_info
 
 
-def find_best_matching_word(definitions):
+def find_best_matching_word(definition):
+    TARGET_LANGUAGE = "Urdu"
     # using the LLM to find the best matching word in Urdu
     prompt = f"""You are a bilingual lexicon expert.
-    Given the list of dictionary definitions {definitions}, produce a list of single words in Urdu that best matches each definition in the given definitions list.
-    Provide only the Urdu word in the list of Urdu words without explanations for each definition!
-    Return a list of Urdu words!"""
+    Given a dictionary definition: {definition}, produce the single word in {TARGET_LANGUAGE} that best matches this definition. 
+    Provide only the {TARGET_LANGUAGE} word without explanations! """
     # # using the OpenAI API to find the best matching word in Urdu
     # response = client.chat.completions.create(
     #     model=model,
@@ -98,8 +98,7 @@ def find_best_matching_word(definitions):
     # )
     # return response.choices[0].message.content.strip()
 
-    # on-device inference with gemma model
-    # Tokenize the prompt for model input
+    # on-device inference with gemma model, expecting a single word per prompt/response
     inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to(model.device)
     input_length = inputs.input_ids.shape[1]
     # Generate model output
@@ -111,31 +110,10 @@ def find_best_matching_word(definitions):
             temperature=0.7,
         )
     # Decode only the generated part (skip the input tokens)
-    print(output)
     generated_tokens = output[0][input_length:]
-    print(generated_tokens)
     response_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-    
-    # Try to extract a list of Urdu words from the response
-    # (Assume model returns a Python-like list or a comma/line separated list as suggested in prompt)
-    try:
-        # Try parsing if model output a Python list
-        urdu_words = ast.literal_eval(response_text)
-        print("IT IS A LIST")
-        if not isinstance(urdu_words, list):
-            urdu_words = [urdu_words]
-    except (ValueError, SyntaxError):
-        # Fallback: split by common delimiters (comma, newline, or semicolon)
-        urdu_words = []
-        for delimiter in [",", "\n", ";"]:
-            if delimiter in response_text:
-                urdu_words = [w.strip() for w in response_text.split(delimiter) if w.strip()]
-                break
-        # If still no words found, treat the whole response as one word
-        if not urdu_words:
-            urdu_words = [response_text.strip()] if response_text.strip() else []
-    
-    return urdu_words
+
+    return response_text
 
 
 def main():
@@ -158,20 +136,9 @@ def main():
     urdu_projections = {}
     # for each definition in the senses_dict, we will find the best matching word in Urdu using an LLM
     # and map it to the sense key
-    definition_list, key_list = [], []
-    batch_size = 0
-    for index, (sense_key, definition) in enumerate(senses_dict.items()):
-        key_list.append(sense_key)
-        definition_list.append(definition)
-        batch_size += 1
-        # prompt size of 50 definitions per batch
-        if batch_size == 50 or index == len(senses_dict)-1:
-            best_matching_word = find_best_matching_word(definition_list)
-            for i in range(len(key_list)):
-                urdu_projections[key_list[i]] = best_matching_word[i]
-            definition_list, key_list = [], []
-            batch_size = 0
-        
+    for sense_key, definition in senses_dict.items():
+        best_matching_word = find_best_matching_word(definition)
+        urdu_projections[sense_key] = best_matching_word
 
     # Create a DataFrame from the dictionary
     urdu_df = pd.DataFrame([
