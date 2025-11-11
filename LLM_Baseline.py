@@ -1,31 +1,59 @@
 import os
+import ast
 import nltk
+import torch
 import pandas as pd
 from nltk.corpus import wordnet as wn
 from openai import OpenAI
 from dotenv import load_dotenv
+from huggingface_hub import login
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-# Download WordNet if not already downloaded
-try:
-    wn.synsets('test')
-except LookupError:
-    nltk.download('wordnet')
+# Download WordNet
+nltk.download('wordnet')
 
-# setting the API key and initializing the client
-load_dotenv()
-# api_key = os.getenv("OPENROUTER_API_KEY")
-api_key = os.getenv("HF_TOKEN")
-if not api_key:
-    raise ValueError(
-        "API_KEY environment variable not set.\n"
-    )
-client = OpenAI(
-    # base_url="https://openrouter.ai/api/v1",
-    base_url="https://router.huggingface.co/v1",
-    api_key=api_key
-)
+# # setting the API key and initializing the client
+# load_dotenv()
+# # api_key = os.getenv("OPENROUTER_API_KEY")
+# api_key = os.getenv("HF_TOKEN")
+# if not api_key:
+#     raise ValueError(
+#         "API_KEY environment variable not set.\n"
+#     )
+# client = OpenAI(
+#     # base_url="https://openrouter.ai/api/v1",
+#     base_url="https://router.huggingface.co/v1",
+#     api_key=api_key
+# )
 # model = "deepseek/deepseek-r1-0528-qwen3-8b:free"
-model = "moonshotai/Kimi-K2-Instruct-0905"
+
+# Authenticate with Hugging Face
+load_dotenv()
+hf_token = os.getenv("HF_TOKEN")
+login(token=hf_token)
+# initialise the model
+model_name = "google/gemma-3-4b-it"
+tokenizer = AutoTokenizer.from_pretrained(model_name, token=hf_token)
+
+# Determine device and dtype
+if torch.cuda.is_available():
+    device = "cuda"
+    dtype = torch.bfloat16
+    device_map = None
+else:
+    device = "cpu"
+    dtype = torch.float32
+    device_map = None
+
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map=device_map,
+    torch_dtype=dtype,
+    token=hf_token,
+    low_cpu_mem_usage=True,
+)
+# Move model to device
+model = model.to(device)
 
 
 def get_sense_ids(word, pos):
@@ -60,15 +88,54 @@ def find_best_matching_word(definitions):
     prompt = f"""You are a bilingual lexicon expert.
     Given the list of dictionary definitions {definitions}, produce a list of single words in Urdu that best matches each definition in the given definitions list.
     Provide only the Urdu word in the list of Urdu words without explanations for each definition!
-    Return a list a of Urdu words!"""
-    # using the OpenAI API to find the best matching word in Urdu
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "user", "content": prompt}
-        ],
-    )
-    return response.choices[0].message.content.strip()
+    Return a list of Urdu words!"""
+    # # using the OpenAI API to find the best matching word in Urdu
+    # response = client.chat.completions.create(
+    #     model=model,
+    #     messages=[
+    #         {"role": "user", "content": prompt}
+    #     ],
+    # )
+    # return response.choices[0].message.content.strip()
+
+    # on-device inference with gemma model
+    # Tokenize the prompt for model input
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to(model.device)
+    input_length = inputs.input_ids.shape[1]
+    # Generate model output
+    with torch.no_grad():
+        output = model.generate(
+            **inputs,
+            max_new_tokens=100,
+            do_sample=False,
+            temperature=0.7,
+        )
+    # Decode only the generated part (skip the input tokens)
+    print(output)
+    generated_tokens = output[0][input_length:]
+    print(generated_tokens)
+    response_text = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
+    
+    # Try to extract a list of Urdu words from the response
+    # (Assume model returns a Python-like list or a comma/line separated list as suggested in prompt)
+    try:
+        # Try parsing if model output a Python list
+        urdu_words = ast.literal_eval(response_text)
+        print("IT IS A LIST")
+        if not isinstance(urdu_words, list):
+            urdu_words = [urdu_words]
+    except (ValueError, SyntaxError):
+        # Fallback: split by common delimiters (comma, newline, or semicolon)
+        urdu_words = []
+        for delimiter in [",", "\n", ";"]:
+            if delimiter in response_text:
+                urdu_words = [w.strip() for w in response_text.split(delimiter) if w.strip()]
+                break
+        # If still no words found, treat the whole response as one word
+        if not urdu_words:
+            urdu_words = [response_text.strip()] if response_text.strip() else []
+    
+    return urdu_words
 
 
 def main():
