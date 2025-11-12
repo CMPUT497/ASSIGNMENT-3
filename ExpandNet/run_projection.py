@@ -131,9 +131,12 @@ for _, row in df_sent.iterrows():
     try:
         is_na = pd.isna(bns)
         if hasattr(is_na, 'any'):
+            # It's an array/Series, check if any element is NA
             if is_na.any():
                 continue
-            elif is_na:
+        else:
+            # It's a scalar, check directly
+            if is_na:
                 continue
     except (TypeError, ValueError):
         if bns is None or (isinstance(bns, float) and pd.isna(bns)):
@@ -182,7 +185,7 @@ print()
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
 print(f"Saving results to {args.output_file}...")
-with open(args.output_file, 'w') as f:
+with open(args.output_file, 'w', encoding='utf-8') as f:
   for (bn, lemma) in sorted(senses):
     print(bn, lemma, sep='\t', file=f)
 
