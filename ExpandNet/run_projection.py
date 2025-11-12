@@ -57,25 +57,24 @@ def load_dict(filepaths):
                     print(f"Warning: Line {line_num} in {filepath} has fewer than 2 columns.")
                     continue
                 eng_word = row[0].strip().lower().replace(' ', '_')  # Normalize English key
-                fr_words = set(word.strip().lower().replace(' ', '_') for word in row[1].split())
+                ur_words = set(word.strip().lower().replace(' ', '_') for word in row[1].split())
                 if eng_word in dict_:
-                    dict_[eng_word].update(fr_words)  # Merge sets if key exists
+                    dict_[eng_word].update(ur_words)  # Merge sets if key exists
                 else:
-                    dict_[eng_word] = fr_words
+                    dict_[eng_word] = ur_words
     return dict_
 
-
-def is_valid_translation(eng_word, fr_word, dict_):
-  """Check if (eng_word, fr_word) is a valid translation pair in the dict."""
-  eng_word = eng_word.lower().strip().replace(' ', '_')
-  fr_word = fr_word.lower().strip().replace(' ', '_')
-  if eng_word not in dict_:
-    return False
-  return fr_word in dict_[eng_word]
+def is_valid_translation(eng_word, ur_word, dict_):
+    """Check if (eng_word, ur_word) is a valid translation pair in the dict."""
+    eng_word = eng_word.lower().strip().replace(' ', '_')
+    ur_word = ur_word.lower().strip().replace(' ', '_')
+    if eng_word not in dict_:
+        return False
+    return ur_word in dict_[eng_word]
 
 def get_alignments(alignments, i):
-  """Get all target indices aligned to source index i."""
-  return [link[1] for link in alignments if link[0] == i]
+    """Get all target indices aligned to source index i."""
+    return [link[1] for link in alignments if link[0] == i]
 
 # Load the dictionary.
 print("Loading dictionary...")
@@ -84,8 +83,12 @@ print(f"Dictionary loaded")
 
 # Group by sentence_id and aggregate bn_gold and lemma values into lists
 print("Preparing data...")
+# Filter out empty strings and NaN values before grouping
+df_src_filtered = df_src[df_src['bn_gold'].notna() & (df_src['bn_gold'] != '')].copy()
+print(f"Rows in df_src_filtered: {len(df_src_filtered)}")
+
 bn_gold_lists = (
-    df_src.groupby("sentence_id")["bn_gold"]
+    df_src_filtered.groupby("sentence_id")["bn_gold"]
        .apply(list)
        .reset_index(name="bn_gold")
 )
@@ -96,38 +99,85 @@ lemma_gold_lists = (
        .reset_index(name="lemma_gold")
 )
 
+print("Length of bn_gold_lists:", len(bn_gold_lists))
+print("Length of lemma_gold_lists:", len(lemma_gold_lists))
+
 # Merge back into df_sent
 df_sent = (
     df_sent.merge(bn_gold_lists, on="sentence_id", how="left")
            .merge(lemma_gold_lists, on="sentence_id", how="left")
 )
+
+print("Length of df_sent:", len(df_sent))
+
 print(f"Data prepared")
 
 # Project senses
 print("Projecting senses...")
 senses = set()
 for _, row in df_sent.iterrows():
-  src = row['lemma_gold']
-  tgt = row['translation_lemma'].split(' ')
-  ali = ast.literal_eval(row['alignment'])
-  bns = row['bn_gold']
+    src = row['lemma_gold']
+    tgt = row['translation_lemma'].split(' ')
+    print("Target lemma:", tgt)
+    ali = ast.literal_eval(row['alignment'])
+    print("Alignment:", ali)
+    bns = row['bn_gold']
+    print(bns)
+    print()
+  
 
-  for i, bn in enumerate(bns):
-    if not str(bn)[:3] == 'bn:':
-      continue
-    alignment_indices = get_alignments(ali, i)
-    if len(alignment_indices) > 1:
-      candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
-    elif len(alignment_indices) == 1:
-      candidates = [tgt[alignment_indices[0]]]
-    else:
-      candidates = []
+    # Handle NaN or non-list values
+    # Check if bns is NaN (avoid ambiguity with arrays)
+    try:
+        is_na = pd.isna(bns)
+        if hasattr(is_na, 'any'):
+            if is_na.any():
+                continue
+            elif is_na:
+                continue
+    except (TypeError, ValueError):
+        if bns is None or (isinstance(bns, float) and pd.isna(bns)):
+            continue
+    
+    # Convert to list if needed
+    if not isinstance(bns, list):
+        if hasattr(bns, 'tolist'):
+            bns = bns.tolist()
+        elif hasattr(bns, '__iter__') and not isinstance(bns, str):
+            bns = list(bns)
+        else:
+            continue
+    
+    if not isinstance(src, list):
+        if hasattr(src, 'tolist'):
+            src = src.tolist()
+        elif hasattr(src, '__iter__') and not isinstance(src, str):
+            src = list(src)
+        else:
+            continue
 
-    if candidates:
-      for candidate in candidates:
-        source = src[i]
-        if is_valid_translation(source, candidate, dict_wik):
-          senses.add((bn, candidate))
+    for i, bn in enumerate(bns):
+        if not str(bn)[:3] == 'bn:':
+            continue
+        alignment_indices = get_alignments(ali, i)
+        print("alignment indices:", alignment_indices)
+        if len(alignment_indices) > 1:
+            candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
+        elif len(alignment_indices) == 1:
+            candidates = [tgt[alignment_indices[0]]]
+        else:
+            candidates = []
+        print("Candidates:", candidates)
+        if candidates:
+            for candidate in candidates:
+                source = src[i]
+                print("src:", src)
+                if is_valid_translation(source, candidate, dict_wik):
+                    print(f"CHECK: Valid translation found for source '{source}' and candidate '{candidate}' with BabelNet synset '{bn}'")
+                    senses.add((bn, candidate))
+
+print()
+
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 

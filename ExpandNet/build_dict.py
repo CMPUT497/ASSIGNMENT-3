@@ -31,19 +31,19 @@ def main():
                 ur, en = line.split(" ", 1)
                 ur = normalize_urdu(ur)
                 en = lemmatize_en(en)
-                if ur not in rows:
-                    rows[ur] = []
-                if en not in rows[ur]:
-                    rows[ur].append(en)
+                if en not in rows:
+                    rows[en] = []
+                if ur not in rows[en]:
+                    rows[en].append(ur)
 
-    output_file = f"{root_dir}/dictionaries/ur_dict.tsv"
+    output_file = f"{root_dir}/dictionaries/en_ur_dict.tsv"
     with open(output_file, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter="\t")
         for ur, en_list in rows.items():
             en_str = " ".join(en_list)
             writer.writerow([ur, en_str])
 
-    print(f"ur_dict.tsv created at {output_file}")
+    print(f"en_ur_dict.tsv created at {output_file}")
 
 
 if __name__ == "__main__":
