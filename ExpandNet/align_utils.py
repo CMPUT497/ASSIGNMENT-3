@@ -61,9 +61,7 @@ class DBAligner:
             import babelnet as bn
             from babelnet import Language
             from babelnet.pos import POS
-            LANGS = {"tr": Language.TR, "es": Language.ES, "it": Language.IT, "ar": Language.AR, "de": Language.DE,
-           "fr": Language.FR, "en": Language.EN, "ja": Language.JA, "th": Language.TH, "zh": Language.ZH,
-          " ko": Language.KO, "ro": Language.RO }
+            LANGS = {"es": Language.ES}
             global POS_TAGS
             POS_TAGS = {"VERB": POS.VERB, "NOUN": POS.NOUN, "ADV": POS.ADV, "ADJ": POS.ADJ, "PROPN": POS.NOUN}
             
@@ -288,7 +286,12 @@ def get_lemma(word, lang):
     if lang in LEMMATIZERS:
         proper_nlp = LEMMATIZERS[lang]
     else:
-        proper_nlp = LEMMATIZERS['xx']
+        # Fallback to 'en' if available, otherwise return word as-is
+        if 'en' in LEMMATIZERS:
+            proper_nlp = LEMMATIZERS['en']
+        else:
+            # No lemmatizer available, return word unchanged
+            return word
     cachekey = word + '<>' + lang
     if cachekey in STEM_CACHE:
         return STEM_CACHE[cachekey]
@@ -406,7 +409,13 @@ def token_pos_and_morph_tag(sentence, language):
     if language in LEMMATIZERS:
         doc = LEMMATIZERS[language](sentence)
     else:
-        doc = LEMMATIZERS['xx'](sentence)
+        # Fallback to 'en' if available, otherwise use a simple tokenizer
+        if 'en' in LEMMATIZERS:
+            doc = LEMMATIZERS['en'](sentence)
+        else:
+            # No lemmatizer available, return simple tokenization
+            words = sentence.split()
+            return (words, ['X'] * len(words), [{}] * len(words))
    
     for token in doc:
         tokens.append(token.text)
