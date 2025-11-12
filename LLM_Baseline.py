@@ -87,8 +87,16 @@ def find_best_matching_word(definition):
     TARGET_LANGUAGE = "Urdu"
     # using the LLM to find the best matching word in Urdu
     prompt = f"""You are a bilingual lexicon expert.
-    Given a dictionary definition: {definition}, produce the single word in {TARGET_LANGUAGE} that best matches this definition. 
-    Provide only the {TARGET_LANGUAGE} word without explanations! """
+    Given a dictionary definition: "{definition}", produce the single word in {TARGET_LANGUAGE} that best matches this definition. 
+    Provide only the one {TARGET_LANGUAGE} word without explanations!
+    DO NOT PROVIDE ANY OTHER OUPUT BUT THE URDU WORD!!
+    Example (Do not include OUTPUT in your response, here INPUT and OUTPUT are only present to help you distinguish INPUT and OUTPUT, they should not be present in the your response), 
+    (Only the urdu word must be present in your response)
+    Given INPUT prompt: You are a bilingual lexicon expert.
+    Given a dictionary definition: "burden", produce the single word in {TARGET_LANGUAGE} that best matches this definition. 
+    Provide only the one {TARGET_LANGUAGE} word without explanations!
+    DO NOT PROVIDE ANY OTHER OUPUT BUT THE URDU WORD!!
+    Expected OUTPUT response from you: بوج"""
     # # using the OpenAI API to find the best matching word in Urdu
     # response = client.chat.completions.create(
     #     model=model,
@@ -147,6 +155,7 @@ def main():
     ])
     
     # saving the urdu projections in a TSV
+    
     output_file = "urdu_projections.tsv"
     urdu_df.to_csv(output_file, sep="\t", index=False)
     print(f"Saved {len(urdu_projections)} Urdu projections to {output_file}")
