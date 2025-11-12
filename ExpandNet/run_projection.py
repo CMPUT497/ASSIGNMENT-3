@@ -21,7 +21,13 @@ def parse_args():
 
 args = parse_args()
 
-csv.field_size_limit(sys.maxsize)
+# Set CSV field size limit to a large but safe value for Windows compatibility
+# sys.maxsize can be too large on Windows (32-bit int limit)
+try:
+    csv.field_size_limit(sys.maxsize)
+except OverflowError:
+    # On Windows, use a large but safe value (2^31 - 1)
+    csv.field_size_limit(2147483647)
 
 print(f"Source data:     {args.src_data}")
 print(f"Source gold:     {args.src_gold}")
