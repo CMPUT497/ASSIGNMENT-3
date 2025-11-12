@@ -38,11 +38,9 @@ print(f"Output file:     {args.output_file}")
 # Load the dataset and alignment data.
 print("Loading dataset...")
 df_src = xml_utils.process_dataset(args.src_data, args.src_gold)
-print(f"Dataset loaded: {len(df_src)} rows")
 
 print("Loading alignment data...")
 df_sent = pd.read_csv(args.alignment_file, sep='\t')
-print(f"Alignment loaded: {len(df_sent)} sentences")
 
 def load_dict(filepaths):
     """Load multiple TSV files into a dict: {english_word: set(french_words)}.
@@ -81,16 +79,15 @@ print("Loading dictionary...")
 dict_wik = load_dict([args.dictionary])
 print(f"Dictionary loaded")
 
-# Group by sentence_id and aggregate bn_gold and lemma values into lists
 print("Preparing data...")
 # Filter out empty strings and NaN values before grouping
-df_src_filtered = df_src[df_src['bn_gold'].notna() & (df_src['bn_gold'] != '')].copy()
-print(f"Rows in df_src_filtered: {len(df_src_filtered)}")
+df_src_filtered = df_src[df_src['gold'].notna() & (df_src['gold'] != '')].copy()
 
-bn_gold_lists = (
-    df_src_filtered.groupby("sentence_id")["bn_gold"]
+# Group by sentence_id and aggregate gold and lemma values into lists
+gold_lists = (
+    df_src_filtered.groupby("sentence_id")["gold"]
        .apply(list)
-       .reset_index(name="bn_gold")
+       .reset_index(name="gold")
 )
 
 lemma_gold_lists = (
@@ -99,17 +96,11 @@ lemma_gold_lists = (
        .reset_index(name="lemma_gold")
 )
 
-print("Length of bn_gold_lists:", len(bn_gold_lists))
-print("Length of lemma_gold_lists:", len(lemma_gold_lists))
-
 # Merge back into df_sent
 df_sent = (
-    df_sent.merge(bn_gold_lists, on="sentence_id", how="left")
+    df_sent.merge(gold_lists, on="sentence_id", how="left")
            .merge(lemma_gold_lists, on="sentence_id", how="left")
 )
-
-print("Length of df_sent:", len(df_sent))
-
 print(f"Data prepared")
 
 # Project senses
@@ -118,13 +109,8 @@ senses = set()
 for _, row in df_sent.iterrows():
     src = row['lemma_gold']
     tgt = row['translation_lemma'].split(' ')
-    print("Target lemma:", tgt)
     ali = ast.literal_eval(row['alignment'])
-    print("Alignment:", ali)
-    bns = row['bn_gold']
-    print(bns)
-    print()
-  
+    bns = row['gold']
 
     # Handle NaN or non-list values
     # Check if bns is NaN (avoid ambiguity with arrays)
@@ -160,27 +146,21 @@ for _, row in df_sent.iterrows():
             continue
 
     for i, bn in enumerate(bns):
-        if not str(bn)[:3] == 'bn:':
-            continue
+        # remove bable net id check - as we use Wordnet ids
+        # if not str(bn)[:3] == 'bn:':
+        #     continue
         alignment_indices = get_alignments(ali, i)
-        print("alignment indices:", alignment_indices)
         if len(alignment_indices) > 1:
             candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
         elif len(alignment_indices) == 1:
             candidates = [tgt[alignment_indices[0]]]
         else:
             candidates = []
-        print("Candidates:", candidates)
         if candidates:
             for candidate in candidates:
                 source = src[i]
-                print("src:", src)
                 if is_valid_translation(source, candidate, dict_wik):
-                    print(f"CHECK: Valid translation found for source '{source}' and candidate '{candidate}' with BabelNet synset '{bn}'")
                     senses.add((bn, candidate))
-
-print()
-
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
