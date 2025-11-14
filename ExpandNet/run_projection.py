@@ -12,7 +12,7 @@ def parse_args():
   parser.add_argument("--src_gold", type=str, default="xlwsd_se13.key.txt",
                       help="Path to the gold sense tagging file.")
   parser.add_argument("--dictionary", type=str, default="wikpan-en-fr.tsv",
-                      help="Use a dictionary for filtering. Available options: none, bn (BabelNet), wik (WiktExtract), wikpan (WiktExtract and PanLex)")
+                      help="Use a dictionary for filtering. Available options: none, wn_sense (BabelNet), wik (WiktExtract), wikpan (WiktExtract and PanLex)")
   parser.add_argument("--alignment_file", type=str, default="expandnet_step2_align.out.tsv",
                       help="File containing the output of step 2 (alignment).")
   parser.add_argument("--output_file", type=str, default="expandnet_step3_project.out.tsv")
@@ -114,12 +114,12 @@ for _, row in df_sent.iterrows():
     src = row['lemma_gold']
     tgt = row['translation_lemma'].split(' ')
     ali = ast.literal_eval(row['alignment'])
-    bns = row['gold']
+    gold_senses = row['gold']
 
     # Handle NaN or non-list values
-    # Check if bns is NaN (avoid ambiguity with arrays)
+    # Check if gold_senses is NaN (avoid ambiguity with arrays)
     try:
-        is_na = pd.isna(bns)
+        is_na = pd.isna(gold_senses)
         if hasattr(is_na, 'any'):
             # It's an array/Series, check if any element is NA
             if is_na.any():
@@ -129,15 +129,15 @@ for _, row in df_sent.iterrows():
             if is_na:
                 continue
     except (TypeError, ValueError):
-        if bns is None or (isinstance(bns, float) and pd.isna(bns)):
+        if gold_senses is None or (isinstance(gold_senses, float) and pd.isna(gold_senses)):
             continue
     
     # Convert to list if needed
-    if not isinstance(bns, list):
-        if hasattr(bns, 'tolist'):
-            bns = bns.tolist()
-        elif hasattr(bns, '__iter__') and not isinstance(bns, str):
-            bns = list(bns)
+    if not isinstance(gold_senses, list):
+        if hasattr(gold_senses, 'tolist'):
+            gold_senses = gold_senses.tolist()
+        elif hasattr(gold_senses, '__iter__') and not isinstance(gold_senses, str):
+            gold_senses = list(gold_senses)
         else:
             continue
     
@@ -149,11 +149,11 @@ for _, row in df_sent.iterrows():
         else:
             continue
 
-    for i, bn in enumerate(bns):
+    for i, wn_sense in enumerate(gold_senses):
         # remove bable net id check - as we use Wordnet ids
-        # if not str(bn)[:3] == 'bn:':
+        # if not str(wn_sense)[:3] == 'wn_sense:':
         #     continue
-        sense_token = bn.split('%')[0]
+        sense_token = wn_sense.split('%')[0]
         idx = src.index(sense_token)
         alignment_indices = get_alignments(ali, idx)
         if len(alignment_indices) > 1:
@@ -166,16 +166,18 @@ for _, row in df_sent.iterrows():
         if candidates:
             for candidate in candidates:
                 source = src[idx]
+                print(f"{source} and the {candidate} are match and sense id {wn_sense}")
                 if is_valid_translation(source, candidate, dict_wik):
-                    print(f"{source} and the {candidate} are match and sense id {bn}")
-                    senses.add((bn, candidate))
+                    print(f"{source} and the {candidate} are match and sense id {wn_sense}")
+                    print()
+                    senses.add((wn_sense, candidate))
     # break
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
 print(f"Saving results to {args.output_file}...")
 with open(args.output_file, 'w', encoding='utf-8') as f:
-  for (bn, lemma) in sorted(senses):
-    print(bn, lemma, sep='\t', file=f)
+  for (wn_sense, lemma) in sorted(senses):
+    print(wn_sense, lemma, sep='\t', file=f)
 
 print('Complete!')
