@@ -2,6 +2,10 @@ import os
 import csv
 from re import I
 import spacy
+from collections import defaultdict
+from nltk.corpus import wordnet as wn
+
+PREFER_POS_ORDER = (wn.NOUN, wn.ADJ, wn.VERB, wn.ADV)
 
 nlp = spacy.load("en_core_web_lg")
 

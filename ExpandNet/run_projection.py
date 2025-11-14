@@ -162,10 +162,11 @@ for _, row in df_sent.iterrows():
         if candidates:
             for candidate in candidates:
                 source = src[idx]
-                print(f"{source} and the {candidate} are match and sense id {wn_sense}")
-                if is_valid_translation(source, candidate, dict_wik):
-                    print(f"{source} and the {candidate} are match and sense id {wn_sense}")
-                    print()
+                # if is_valid_translation(source, candidate, dict_wik):
+                # easing this check to only checking if the english lemmas are present in the dictionary
+                if source in dict_wik:                
+                    # print(f"{source} and the {candidate} are match and sense id {wn_sense}")
+                    # print()
                     senses.add((wn_sense, candidate))
 
 print(f"Found {len(senses)} unique sense-lemma pairs")

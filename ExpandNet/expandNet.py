@@ -39,7 +39,7 @@ def main():
         PYTHON_EXE, "run_projection.py",
         "--src_data", "Data\\xlwsd_se13.xml",
         "--src_gold", "Data\\semeval2013.key.WNversion.txt",
-        "--dictionary", "dictionaries\\en_ur_dict.tsv",
+        "--dictionary", "dictionaries\\merged_dictionary.tsv",
         "--alignment_file", "expandnet_step2_align_ur.out.tsv",
         "--output_file", "expandnet_step3_project_ur.out.tsv",
         "--join_char", "_"
