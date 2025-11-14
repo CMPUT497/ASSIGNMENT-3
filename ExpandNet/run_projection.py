@@ -101,6 +101,10 @@ df_sent = (
     df_sent.merge(gold_lists, on="sentence_id", how="left")
            .merge(lemma_gold_lists, on="sentence_id", how="left")
 )
+# Save df_sent to a JSON file for inspection
+df_sent.to_json("df_sent_debug.json", orient="records", lines=True, force_ascii=False)
+print("df_sent saved to df_sent_debug.json")
+
 print(f"Data prepared")
 
 # Project senses
@@ -149,18 +153,23 @@ for _, row in df_sent.iterrows():
         # remove bable net id check - as we use Wordnet ids
         # if not str(bn)[:3] == 'bn:':
         #     continue
-        alignment_indices = get_alignments(ali, i)
+        sense_token = bn.split('%')[0]
+        idx = src.index(sense_token)
+        alignment_indices = get_alignments(ali, idx)
         if len(alignment_indices) > 1:
             candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
         elif len(alignment_indices) == 1:
             candidates = [tgt[alignment_indices[0]]]
         else:
             candidates = []
+        # print(sense_token, idx, alignment_indices, candidates)
         if candidates:
             for candidate in candidates:
-                source = src[i]
+                source = src[idx]
                 if is_valid_translation(source, candidate, dict_wik):
+                    print(f"{source} and the {candidate} are match and sense id {bn}")
                     senses.add((bn, candidate))
+    # break
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
