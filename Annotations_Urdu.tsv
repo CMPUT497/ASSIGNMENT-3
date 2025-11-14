@@ -3003,13 +3003,13 @@ semeval2013.d005.s013	wf	to	PRT	to	None
 semeval2013.d005.s013	wf	have	VERB	have	None			
 semeval2013.d005.s013	wf	be	VERB	been	None			
 semeval2013.d005.s013	wf	the	DET	the	None			
-semeval2013.d005.s013	instance	inspiration	NOUN	inspiration	semeval2013.d005.s013.t001	حوصلہ	0	1
+semeval2013.d005.s013	instance	inspiration	NOUN	inspiration	semeval2013.d005.s013.t001	حوصلہ	1	1
 semeval2013.d005.s013	wf	for	ADP	for	None			
 semeval2013.d005.s013	wf	the	DET	the	None			
-semeval2013.d005.s013	instance	television_show	NOUN	television show	semeval2013.d005.s013.t002	ٹیلی شو	1	
+semeval2013.d005.s013	instance	television_show	NOUN	television show	semeval2013.d005.s013.t002	ٹیلی شو		
 semeval2013.d005.s013	wf	and	CONJ	and	None			
 semeval2013.d005.s013	wf	the	DET	the	None			
-semeval2013.d005.s013	instance	movie	NOUN	movie	semeval2013.d005.s013.t003	فلم	1	
+semeval2013.d005.s013	instance	movie	NOUN	movie	semeval2013.d005.s013.t003	فلم		
 semeval2013.d005.s013	wf	``	.	``	None			
 semeval2013.d005.s013	wf	the	DET	The	None			
 semeval2013.d005.s013	wf	fugitive	NOUN	Fugitive	None			
@@ -3067,7 +3067,7 @@ semeval2013.d005.s015	wf	for	ADP	for	None
 semeval2013.d005.s015	instance	concern	NOUN	concern	semeval2013.d005.s015.t001	تشویش	1	
 semeval2013.d005.s015	wf	about	ADP	about	None			
 semeval2013.d005.s015	wf	the	DET	the	None			
-semeval2013.d005.s015	instance	impact	NOUN	impact	semeval2013.d005.s015.t002	مطالعہ	0	0
+semeval2013.d005.s015	instance	impact	NOUN	impact	semeval2013.d005.s015.t002	مطالعہ	1	
 semeval2013.d005.s015	wf	of	ADP	of	None			
 semeval2013.d005.s015	wf	the	DET	the	None			
 semeval2013.d005.s015	wf	new	ADJ	new	None			
@@ -3087,12 +3087,12 @@ semeval2013.d005.s015	wf	a	DET	a	None
 semeval2013.d005.s015	wf	stanford	NOUN	Stanford	None			
 semeval2013.d005.s015	wf	law	NOUN	Law	None			
 semeval2013.d005.s015	wf	school	NOUN	School	None			
-semeval2013.d005.s015	instance	professor	NOUN	professor	semeval2013.d005.s015.t004	پروفیسر	1	
+semeval2013.d005.s015	instance	professor	NOUN	professor	semeval2013.d005.s015.t004	پروفیسر		
 semeval2013.d005.s015	wf	who	PRON	who	None			
 semeval2013.d005.s015	wf	study	VERB	studied	None			
 semeval2013.d005.s015	wf	the	DET	the	None			
 semeval2013.d005.s015	instance	connecticut	NOUN	Connecticut	semeval2013.d005.s015.t005			
-semeval2013.d005.s015	instance	death_penalty	NOUN	death penalty	semeval2013.d005.s015.t006	موت کی سزا	1	
+semeval2013.d005.s015	instance	death_penalty	NOUN	death penalty	semeval2013.d005.s015.t006	موت کی سزا		
 semeval2013.d005.s015	wf	and	CONJ	and	None			
 semeval2013.d005.s015	wf	write	VERB	wrote	None			
 semeval2013.d005.s015	wf	a	DET	a	None			
@@ -3339,16 +3339,16 @@ semeval2013.d005.s024	wf	they	PRON	They	None
 semeval2013.d005.s024	wf	argue	VERB	argued	None			
 semeval2013.d005.s024	wf	that	ADP	that	None			
 semeval2013.d005.s024	wf	the	DET	the	None			
-semeval2013.d005.s024	instance	news_media	NOUN	news media	semeval2013.d005.s024.t000	نیوزمیڈیا	1	
+semeval2013.d005.s024	instance	news_media	NOUN	news media	semeval2013.d005.s024.t000	نیوزمیڈیا		
 semeval2013.d005.s024	wf	continually	ADV	continually	None			
 semeval2013.d005.s024	wf	fan	VERB	fanned	None			
 semeval2013.d005.s024	wf	the	DET	the	None			
 semeval2013.d005.s024	wf	flame	NOUN	flames	None			
 semeval2013.d005.s024	wf	of	ADP	of	None			
-semeval2013.d005.s024	instance	emotion	NOUN	emotion	semeval2013.d005.s024.t001	جذبات	1	
+semeval2013.d005.s024	instance	emotion	NOUN	emotion	semeval2013.d005.s024.t001	جذبات		
 semeval2013.d005.s024	wf	about	ADP	about	None			
 semeval2013.d005.s024	wf	the	DET	the	None			
-semeval2013.d005.s024	instance	case	NOUN	case	semeval2013.d005.s024.t002	کیس	1	
+semeval2013.d005.s024	instance	case	NOUN	case	semeval2013.d005.s024.t002	کیس		
 semeval2013.d005.s024	wf	.	.	.	None			
 semeval2013.d005.s025	wf	``	.	``	None			
 semeval2013.d005.s025	wf	the	DET	The	None			
@@ -3517,7 +3517,7 @@ semeval2013.d005.s031	wf	.	.	.	None
 semeval2013.d005.s031	wf	'	.	'	None			
 semeval2013.d006.s000	instance	sport	NOUN	Sport	semeval2013.d006.s000.t000	کھیل	1	
 semeval2013.d006.s000	wf	and	CONJ	and	None			
-semeval2013.d006.s000	instance	fraud	NOUN	fraud	semeval2013.d006.s000.t001	دہی	0	0
+semeval2013.d006.s000	instance	fraud	NOUN	fraud	semeval2013.d006.s000.t001	دہی		
 semeval2013.d006.s000	instance	law	NOUN	law	semeval2013.d006.s000.t002	قانون	1	
 semeval2013.d006.s001	instance	trick	NOUN	Tricks	semeval2013.d006.s001.t000			
 semeval2013.d006.s001	wf	such	ADJ	such	None			
@@ -4343,17 +4343,17 @@ semeval2013.d006.s024	wf	the	DET	the	None
 semeval2013.d006.s024	instance	border	NOUN	border	semeval2013.d006.s024.t000	سرحد	1	
 semeval2013.d006.s024	wf	between	ADP	between	None			
 semeval2013.d006.s024	wf	the	DET	the	None			
-semeval2013.d006.s024	instance	wittiness	NOUN	wittiness	semeval2013.d006.s024.t001	ذہانت	1	
+semeval2013.d006.s024	instance	wittiness	NOUN	wittiness	semeval2013.d006.s024.t001	ذہانت		
 semeval2013.d006.s024	wf	and	CONJ	and	None			
 semeval2013.d006.s024	wf	the	DET	the	None			
 semeval2013.d006.s024	instance	law	NOUN	law	semeval2013.d006.s024.t002	قانون	1	
-semeval2013.d006.s024	instance	fraud	NOUN	fraud	semeval2013.d006.s024.t003	دھوکہ	1	
+semeval2013.d006.s024	instance	fraud	NOUN	fraud	semeval2013.d006.s024.t003	دھوکہ		
 semeval2013.d006.s024	wf	be	VERB	is	None			
 semeval2013.d006.s024	wf	diffuse	ADJ	diffuse	None			
 semeval2013.d006.s024	wf	","	.	","	None			
 semeval2013.d006.s024	wf	in	ADP	in	None			
 semeval2013.d006.s024	wf	this	DET	this	None			
-semeval2013.d006.s024	instance	occasion	NOUN	occasion	semeval2013.d006.s024.t004	موقع	1	
+semeval2013.d006.s024	instance	occasion	NOUN	occasion	semeval2013.d006.s024.t004	موقع		
 semeval2013.d006.s024	wf	I	PRON	I	None			
 semeval2013.d006.s024	wf	believe	VERB	believe	None			
 semeval2013.d006.s024	wf	it	PRON	it	None			
@@ -4362,7 +4362,7 @@ semeval2013.d006.s024	wf	a	DET	a	None
 semeval2013.d006.s024	wf	clear	ADJ	clear	None			
 semeval2013.d006.s024	instance	case	NOUN	case	semeval2013.d006.s024.t005	معاملہ	1	
 semeval2013.d006.s024	wf	of	ADP	of	None			
-semeval2013.d006.s024	instance	wittiness	NOUN	wittiness	semeval2013.d006.s024.t006	ذہانت	1	
+semeval2013.d006.s024	instance	wittiness	NOUN	wittiness	semeval2013.d006.s024.t006	ذہانت		
 semeval2013.d006.s024	wf	.	.	.	None			
 semeval2013.d006.s025	wf	the	DET	The	None			
 semeval2013.d006.s025	instance	controversy	NOUN	controversy	semeval2013.d006.s025.t000			
@@ -4490,7 +4490,7 @@ semeval2013.d007.s002	wf	essential	ADJ	essential	None
 semeval2013.d007.s002	wf	.	.	.	None			
 semeval2013.d007.s003	wf	``	.	``	None			
 semeval2013.d007.s003	wf	this	DET	This	None			
-semeval2013.d007.s003	instance	organism	NOUN	organism	semeval2013.d007.s003.t000	جاندار	1	
+semeval2013.d007.s003	instance	organism	NOUN	organism	semeval2013.d007.s003.t000	جاندار		
 semeval2013.d007.s003	wf	have	VERB	has	None			
 semeval2013.d007.s003	wf	dual	ADJ	dual	None			
 semeval2013.d007.s003	instance	capability	NOUN	capability	semeval2013.d007.s003.t001	صلاحیت	1	
@@ -5128,7 +5128,7 @@ semeval2013.d007.s027	instance	national_institutes_of_health	NOUN	National Insti
 semeval2013.d007.s027	wf	.	.	.	None			
 semeval2013.d008.s000	wf	the	DET	The	None			
 semeval2013.d008.s000	wf	democratic	ADJ	democratic	None			
-semeval2013.d008.s000	instance	routine	NOUN	routine	semeval2013.d008.s000.t000	 ڈیموکریٹک	0	0
+semeval2013.d008.s000	instance	routine	NOUN	routine	semeval2013.d008.s000.t000	 ڈیموکریٹک		
 semeval2013.d008.s001	instance	support	NOUN	Support	semeval2013.d008.s001.t000			
 semeval2013.d008.s001	wf	for	ADP	for	None			
 semeval2013.d008.s001	instance	democracy	NOUN	democracy	semeval2013.d008.s001.t001			
@@ -7710,7 +7710,7 @@ semeval2013.d011.s020	wf	of	ADP	of	None
 semeval2013.d011.s020	instance	idea	NOUN	ideas	semeval2013.d011.s020.t004	خیالات	1	
 semeval2013.d011.s020	wf	and	CONJ	and	None			
 semeval2013.d011.s020	wf	to	PRT	to	None			
-semeval2013.d011.s020	instance	economic_growth	NOUN	economic growth	semeval2013.d011.s020.t005	ترقی	1	
+semeval2013.d011.s020	instance	economic_growth	NOUN	economic growth	semeval2013.d011.s020.t005	ترقی	0	0
 semeval2013.d011.s020	wf	(	.	(	None			
 semeval2013.d011.s020	wf	a	DET	a	None			
 semeval2013.d011.s020	wf	large	ADJ	large	None			
@@ -7720,12 +7720,12 @@ semeval2013.d011.s020	wf	naturalised	ADJ	naturalised	None
 semeval2013.d011.s020	instance	immigrant	NOUN	immigrants	semeval2013.d011.s020.t007	تارکینِ	1	
 semeval2013.d011.s020	wf	be	VERB	are	None			
 semeval2013.d011.s020	wf	among	ADP	among	None			
-semeval2013.d011.s020	instance	american	NOUN	American	semeval2013.d011.s020.t008	امریکی	1	
-semeval2013.d011.s020	instance	nobel_prize	NOUN	Nobel prize	semeval2013.d011.s020.t009	نوبل انعام	1	
-semeval2013.d011.s020	instance	winner	NOUN	winners	semeval2013.d011.s020.t010	یافتہ	0	0
+semeval2013.d011.s020	instance	american	NOUN	American	semeval2013.d011.s020.t008	امریکی		
+semeval2013.d011.s020	instance	nobel_prize	NOUN	Nobel prize	semeval2013.d011.s020.t009	نوبل انعام		
+semeval2013.d011.s020	instance	winner	NOUN	winners	semeval2013.d011.s020.t010	یافتہ		
 semeval2013.d011.s020	wf	","	.	","	None			
 semeval2013.d011.s020	wf	whilst	ADP	whilst	None			
-semeval2013.d011.s020	instance	google	NOUN	Google	semeval2013.d011.s020.t011	گوگل	1	
+semeval2013.d011.s020	instance	google	NOUN	Google	semeval2013.d011.s020.t011	گوگل		
 semeval2013.d011.s020	wf	","	.	","	None			
 semeval2013.d011.s020	wf	intel	NOUN	Intel	None			
 semeval2013.d011.s020	wf	","	.	","	None			
@@ -7733,7 +7733,7 @@ semeval2013.d011.s020	wf	paypal	NOUN	Paypal	None
 semeval2013.d011.s020	wf	","	.	","	None			
 semeval2013.d011.s020	wf	ebay	NOUN	eBay	None			
 semeval2013.d011.s020	wf	and	CONJ	and	None			
-semeval2013.d011.s020	instance	yahoo	NOUN	Yahoo	semeval2013.d011.s020.t012	انٹیل	0	0
+semeval2013.d011.s020	instance	yahoo	NOUN	Yahoo	semeval2013.d011.s020.t012	انٹیل		
 semeval2013.d011.s020	wf	be	VERB	were	None			
 semeval2013.d011.s020	wf	all	DET	all	None			
 semeval2013.d011.s020	wf	found	VERB	founded	None			
@@ -8145,7 +8145,7 @@ semeval2013.d012.s014	wf	mortgage	NOUN	mortgage	None
 semeval2013.d012.s014	wf	security	NOUN	securities	None			
 semeval2013.d012.s014	wf	be	VERB	are	None			
 semeval2013.d012.s014	wf	so-called	ADJ	so-called	None			
-semeval2013.d012.s014	instance	mortgage-backed_security	NOUN	mortgage-backed securities	semeval2013.d012.s014.t000	سیکیورٹیز	0	0
+semeval2013.d012.s014	instance	mortgage-backed_security	NOUN	mortgage-backed securities	semeval2013.d012.s014.t000	سیکیورٹیز		
 semeval2013.d012.s014	wf	.	.	.	None			
 semeval2013.d012.s016	wf	this	DET	This	None			
 semeval2013.d012.s016	wf	seal	VERB	sealed	None			
