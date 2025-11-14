@@ -150,9 +150,6 @@ for _, row in df_sent.iterrows():
             continue
 
     for i, wn_sense in enumerate(gold_senses):
-        # remove bable net id check - as we use Wordnet ids
-        # if not str(wn_sense)[:3] == 'wn_sense:':
-        #     continue
         sense_token = wn_sense.split('%')[0]
         idx = src.index(sense_token)
         alignment_indices = get_alignments(ali, idx)
@@ -162,7 +159,6 @@ for _, row in df_sent.iterrows():
             candidates = [tgt[alignment_indices[0]]]
         else:
             candidates = []
-        # print(sense_token, idx, alignment_indices, candidates)
         if candidates:
             for candidate in candidates:
                 source = src[idx]
@@ -171,7 +167,6 @@ for _, row in df_sent.iterrows():
                     print(f"{source} and the {candidate} are match and sense id {wn_sense}")
                     print()
                     senses.add((wn_sense, candidate))
-    # break
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
