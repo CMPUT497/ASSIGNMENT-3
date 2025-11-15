@@ -19,21 +19,21 @@ def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
     # Step 1: translation - already done
-    run_command([PYTHON_EXE, "run_translation.py"])
+    # run_command([PYTHON_EXE, "run_translation.py"])
 
     # Step 2: Build dictionary - already done
-    run_command([PYTHON_EXE, "build_dict.py"])
+    # run_command([PYTHON_EXE, "build_dict.py"])
 
     # Step 3: Run run_align.py - already done
-    run_command([
-        PYTHON_EXE, "run_align.py",
-        "--translation_df_file", "expandnet_step1_translate_ur.out.tsv",
-        "--lang_src", "en",
-        "--lang_tgt", "ur",
-        "--aligner", "dbalign",
-        "--dict", "dictionaries\\en_ur_dict.tsv",
-        "--output_file", "expandnet_step2_align_ur.out.tsv"
-    ])
+    # run_command([
+    #     PYTHON_EXE, "run_align.py",
+    #     "--translation_df_file", "expandnet_step1_translate_ur.out.tsv",
+    #     "--lang_src", "en",
+    #     "--lang_tgt", "ur",
+    #     "--aligner", "dbalign",
+    #     "--dict", "dictionaries\\en_ur_dict.tsv",
+    #     "--output_file", "expandnet_step2_align_ur.out.tsv"
+    # ])
 
     # Step 4: Run run_projection.py
     run_command([

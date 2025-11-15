@@ -27,33 +27,32 @@ def load_dict(filepaths):
 
 
 def is_valid_translation(eng_word, ur_word, dict_):
-  """Check if (eng_word, ur_word) is a valid translation pair in the dict."""
-  eng_word = eng_word.lower().strip().replace(' ', '_')
-  ur_word = ur_word.lower().strip().replace(' ', '_')
-  print(f"Searching the words {eng_word} and {ur_word}")
-  if eng_word not in dict_:
-    return True
-  return ur_word in dict_[eng_word]
+    """Check if (eng_word, ur_word) is a valid translation pair in the dict."""
+    eng_word = eng_word.lower().strip().replace(' ', '_')
+    ur_word = ur_word.lower().strip().replace(' ', '_')
+    if eng_word not in dict_:
+        return True
+    return ur_word in dict_[eng_word]
 
 def get_alignments(alignments, i):
   """Get all target indices aligned to source index i."""
   return [link[1] for link in alignments if link[0] == i]
 
 def parse_args():
-  parser = argparse.ArgumentParser(description="Run ExpandNet on XLWSD dev set (R17).")
-  parser.add_argument("--src_data", type=str, default="xlwsd_se13.xml",
-                      help="Path to the XLWSD XML corpus file.")
-  parser.add_argument("--src_gold", type=str, default="xlwsd_se13.key.txt",
-                      help="Path to the gold sense tagging file.")
-  parser.add_argument("--dictionary", type=str, default="wikpan-en-fr.tsv",
-                      help="Use a dictionary for filtering. Available options: none, bn (BabelNet), wik (WiktExtract), wikpan (WiktExtract and PanLex)")
-  parser.add_argument("--alignment_file", type=str, default="expandnet_step2_align.out.tsv",
-                      help="File containing the output of step 2 (alignment).")
-  parser.add_argument("--output_file", type=str, default="expandnet_step3_project.out.tsv")
-  parser.add_argument("--token_info_file", type=str, default="expandnet_step3_project.token_info.tsv",
-                      help="(Helpful for understanding the process undergone.)")
-  parser.add_argument("--join_char", type=str, default='_')
-  return parser.parse_args()
+    parser = argparse.ArgumentParser(description="Run ExpandNet on XLWSD dev set (R17).")
+    parser.add_argument("--src_data", type=str, default="xlwsd_se13.xml",
+                        help="Path to the XLWSD XML corpus file.")
+    parser.add_argument("--src_gold", type=str, default="xlwsd_se13.key.txt",
+                        help="Path to the gold sense tagging file.")
+    parser.add_argument("--dictionary", type=str, default="wikpan-en-fr.tsv",
+                        help="Use a dictionary for filtering. Available options: none, bn (BabelNet), wik (WiktExtract), wikpan (WiktExtract and PanLex)")
+    parser.add_argument("--alignment_file", type=str, default="expandnet_step2_align.out.tsv",
+                        help="File containing the output of step 2 (alignment).")
+    parser.add_argument("--output_file", type=str, default="expandnet_step3_project.out.tsv")
+    parser.add_argument("--token_info_file", type=str, default="expandnet_step3_project.token_info.tsv",
+                        help="(Helpful for understanding the process undergone.)")
+    parser.add_argument("--join_char", type=str, default='_')
+    return parser.parse_args()
 
 args = parse_args()
 
@@ -130,13 +129,9 @@ with open(args.token_info_file, 'w', encoding='utf-8') as f:
         tgt_tok = row['translation_token'].split(' ')
         assert len(tgt) == len(tgt_tok)
         
-        print("src:", src)
-        print("tgt:", tgt)
-
         ali = ast.literal_eval(row['alignment'])
         bns = row['bn_gold']
         sent_id = row['sentence_id']
-        print("bns:", bns)
         
         for i, bn in enumerate(bns):
             source = src[i]
@@ -163,13 +158,13 @@ with open(args.token_info_file, 'w', encoding='utf-8') as f:
                     f.write(tok_id + '\t' + tok + '\t' + source + '\t' + src_pos + '\t' + t_candidate + '\t'  + candidate + '\t' + bn + '\t' + str(is_valid_translation(source, candidate, dict_wik)) + '\n')
                     if is_valid_translation(source, candidate, dict_wik):
                         senses.add((bn, candidate))
-        break
+        # break
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 
 print(f"Saving results to {args.output_file}...")
-with open(args.output_file, 'w') as f:
-  for (bn, lemma) in sorted(senses):
-    print(bn, lemma, sep='\t', file=f)
+with open(args.output_file, 'w', encoding='utf-8') as f:
+    for (bn, lemma) in sorted(senses):
+        print(bn, lemma, sep='\t', file=f)
 
 print('Complete!')
