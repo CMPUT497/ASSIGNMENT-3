@@ -16,6 +16,8 @@ def parse_args():
   parser.add_argument("--alignment_file", type=str, default="expandnet_step2_align.out.tsv",
                       help="File containing the output of step 2 (alignment).")
   parser.add_argument("--output_file", type=str, default="expandnet_step3_project.out.tsv")
+  parser.add_argument("--token_info_file", type=str, default="expandnet_step3_project.token_info.tsv",
+                      help="(Helpful for understanding the process undergone.)")
   parser.add_argument("--join_char", type=str, default='')
   return parser.parse_args()
 
@@ -67,7 +69,7 @@ def is_valid_translation(eng_word, ur_word, dict_):
     eng_word = eng_word.lower().strip().replace(' ', '_')
     ur_word = ur_word.lower().strip().replace(' ', '_')
     if eng_word not in dict_:
-        return False
+        return True
     return ur_word in dict_[eng_word]
 
 def get_alignments(alignments, i):
@@ -96,78 +98,107 @@ lemma_gold_lists = (
        .reset_index(name="lemma_gold")
 )
 
+token_gold_lists = (
+    df_src.groupby("sentence_id")["text"]
+       .apply(list)
+       .reset_index(name="token_gold")
+)
+
 # Merge back into df_sent
 df_sent = (
     df_sent.merge(gold_lists, on="sentence_id", how="left")
            .merge(lemma_gold_lists, on="sentence_id", how="left")
+           .merge(token_gold_lists, on="sentence_id", how="left")
 )
-# Save df_sent to a JSON file for inspection
-df_sent.to_json("df_sent_debug.json", orient="records", lines=True, force_ascii=False)
-print("df_sent saved to df_sent_debug.json")
-
 print(f"Data prepared")
 
 # Project senses
 print("Projecting senses...")
 senses = set()
-for _, row in df_sent.iterrows():
-    src = row['lemma_gold']
-    tgt = row['translation_lemma'].split(' ')
-    ali = ast.literal_eval(row['alignment'])
-    gold_senses = row['gold']
+with open(args.token_info_file, 'w', encoding='utf-8') as f:
+    f.write("Token ID" + '\t' + "Source Token" + '\t' + "Source Lemma" + '\t' + "Source POS" + '\t' + "Translated Token" + '\t'  + "Translated Lemma" + '\t' + "Synset ID" + '\t' + "Link in Dictionary?" + '\n')
 
-    # Handle NaN or non-list values
-    # Check if gold_senses is NaN (avoid ambiguity with arrays)
-    try:
-        is_na = pd.isna(gold_senses)
-        if hasattr(is_na, 'any'):
-            # It's an array/Series, check if any element is NA
-            if is_na.any():
+    for _, row in df_sent.iterrows():
+        tok_num = 0
+        src = row['lemma_gold']
+        src_tok = row['token_gold']
+        assert len(src) == len(src_tok)
+        
+        tgt = row['translation_lemma'].split(' ')
+        tgt_tok = row['translation_token'].split(' ')
+        assert len(tgt) == len(tgt_tok)
+        
+        ali = ast.literal_eval(row['alignment'])
+        gold_senses = row['gold']
+        sent_id = row['sentence_id']
+        
+        # Handle NaN or non-list values
+        # Check if gold_senses is NaN (avoid ambiguity with arrays)
+        try:
+            is_na = pd.isna(gold_senses)
+            if hasattr(is_na, 'any'):
+                # It's an array/Series, check if any element is NA
+                if is_na.any():
+                    continue
+            else:
+                # It's a scalar, check directly
+                if is_na:
+                    continue
+        except (TypeError, ValueError):
+            if gold_senses is None or (isinstance(gold_senses, float) and pd.isna(gold_senses)):
                 continue
-        else:
-            # It's a scalar, check directly
-            if is_na:
+        
+        # Convert to list if needed
+        if not isinstance(gold_senses, list):
+            if hasattr(gold_senses, 'tolist'):
+                gold_senses = gold_senses.tolist()
+            elif hasattr(gold_senses, '__iter__') and not isinstance(gold_senses, str):
+                gold_senses = list(gold_senses)
+            else:
                 continue
-    except (TypeError, ValueError):
-        if gold_senses is None or (isinstance(gold_senses, float) and pd.isna(gold_senses)):
-            continue
-    
-    # Convert to list if needed
-    if not isinstance(gold_senses, list):
-        if hasattr(gold_senses, 'tolist'):
-            gold_senses = gold_senses.tolist()
-        elif hasattr(gold_senses, '__iter__') and not isinstance(gold_senses, str):
-            gold_senses = list(gold_senses)
-        else:
-            continue
-    
-    if not isinstance(src, list):
-        if hasattr(src, 'tolist'):
-            src = src.tolist()
-        elif hasattr(src, '__iter__') and not isinstance(src, str):
-            src = list(src)
-        else:
-            continue
+        
+        if not isinstance(src, list):
+            if hasattr(src, 'tolist'):
+                src = src.tolist()
+            elif hasattr(src, '__iter__') and not isinstance(src, str):
+                src = list(src)
+            else:
+                continue
 
-    for i, wn_sense in enumerate(gold_senses):
-        sense_token = wn_sense.split('%')[0]
-        idx = src.index(sense_token)
-        alignment_indices = get_alignments(ali, idx)
-        if len(alignment_indices) > 1:
-            candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
-        elif len(alignment_indices) == 1:
-            candidates = [tgt[alignment_indices[0]]]
-        else:
-            candidates = []
-        if candidates:
-            for candidate in candidates:
-                source = src[idx]
-                # if is_valid_translation(source, candidate, dict_wik):
-                # easing this check to only checking if the english lemmas are present in the dictionary
-                if source in dict_wik:                
-                    # print(f"{source} and the {candidate} are match and sense id {wn_sense}")
-                    # print()
-                    senses.add((wn_sense, candidate))
+        for i, wn_sense in enumerate(gold_senses):
+            sense_token = wn_sense.split('%')[0]
+            # if '_' in sense_token:
+            #     print("THIS CONTAINS MULTIPLE WORD TOKEN", sense_token)
+            idx = src.index(sense_token)
+            source = src[idx]
+            tok = src_tok[idx]
+            tok_id = sent_id + f".s{tok_num:03d}"
+            tok_num += 1
+            
+            alignment_indices = get_alignments(ali, idx)
+            if len(alignment_indices) > 1:
+                candidates = [args.join_char.join([tgt[j] for j in alignment_indices])]
+                t_candidates = [args.join_char.join([tgt_tok[j] for j in alignment_indices])]
+            elif len(alignment_indices) == 1:
+                candidates = [tgt[alignment_indices[0]]]
+                t_candidates = [tgt_tok[alignment_indices[0]]]
+            else:
+                candidates = []
+                t_candidates = []
+            
+            if candidates:
+                for t_candidate, candidate in zip(t_candidates, candidates):
+                    
+                    src_pos = wn_sense[-1].upper()
+                    f.write(tok_id + '\t' + tok + '\t' + source + '\t' + src_pos + '\t' + t_candidate + '\t'  + candidate + '\t' + wn_sense + '\t' + str(is_valid_translation(source, candidate, dict_wik)) + '\n')
+                    # easing this check to only checking if the english lemmas are present in the dictionary
+                    if source in dict_wik:    
+                    # if is_valid_translation(source, candidate, dict_wik):            
+                        senses.add((wn_sense, candidate))
+                    else:
+                        # print(f"{sent_id}, {idx}, {alignment_indices}, {source} is NOT present in the dictionary for Urdu Word {candidate}: {wn_sense}")
+                        print(f"{source} is NOT present in the dictionary for Urdu Word {candidate}: {wn_sense}")
+
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 

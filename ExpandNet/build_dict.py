@@ -16,17 +16,20 @@ def lemmatize_en(word):
     return nlp(word)[0].lemma_.lower().replace(" ", "_")
 
 def main(): 
-    files = []
+    txt_files = []
+    tsv_files = []
     root_dir = os.path.dirname(os.path.abspath(__file__))
     dict_dir = f"{root_dir}/dictionaries"
     for fname in os.listdir(dict_dir):
         fpath = os.path.join(dict_dir, fname)
         if os.path.isfile(fpath):
             if fpath.endswith(".txt"):
-                files.append(fpath)
+                txt_files.append(fpath)
+            if fpath.endswith(".tsv"):
+                tsv_files.append(fpath)
 
     rows = {}
-    for file_path in files:
+    for file_path in txt_files:
         with open(file_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
@@ -39,6 +42,21 @@ def main():
                     rows[en] = []
                 if ur not in rows[en]:
                     rows[en].append(ur)
+    
+    for file_path in tsv_files:
+        with open(file_path, "r", encoding='utf-8') as f:
+            reader = csv.reader(f, delimiter="\t")
+            for row in reader:
+                if len(row) < 2:
+                    continue
+                en = lemmatize_en(row[0])
+                ur_tokens = row[1].strip().split()
+                for ur in ur_tokens:
+                    ur_norm = normalize_urdu(ur)
+                    if en not in rows:
+                        rows[en] = []
+                    if ur_norm not in rows[en]:
+                        rows[en].append(ur_norm)
 
     output_file = f"{root_dir}/dictionaries/en_ur_dict.tsv"
     with open(output_file, "w", encoding="utf-8", newline="") as f:
