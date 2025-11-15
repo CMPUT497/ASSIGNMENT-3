@@ -103,7 +103,7 @@ wf	more	more
 wf	than	than	 	 	 	 
 wf	100	100	 	 	 	 
 d000.s003.t003	world	world	N	عالمی	عالمی	bn:00045153n	False
-d000.s003.t004	leaders	leader	N	رہنماؤں	رہنما	bn:00050371n	True
+d000.s003.t004	leaders	leader	N	رہنماؤں	رہنما	bn:00050371n	False
 wf	arriving	arrive	 	 	 	 
 wf	in	in	 	 	 	 
 d000.s003.t005	Copenhagen	copenhagen	N	کوپن	کوپن	bn:00022479n	True
@@ -286,7 +286,7 @@ wf	by	by
 wf	15	15	 	 	 	 
 wf	to	to	 	 	 	 
 wf	30	30	 	 	 	 
-d000.s008.t007	percent	percent	N	30	30	bn:00061135n	False
+d000.s008.t007	percent	percent	N	30	30	bn:00061135n	True
 wf	.	.	 	 	 	 
 wf	Together	together	 	 	 	 
 wf	,	,	 	 	 	 
@@ -469,7 +469,7 @@ d000.s015.t002	foreign minister	foreign_minister	N	خارجہ	خارجہ	bn:0003
 wf	He	he	 	 	 	 
 wf	Yafei	yafeus	 	 	 	 
 wf	said	say	 	 	 	 
-d000.s015.t003	America	america	N	کیے	کرنا	bn:00003341n	False
+d000.s015.t003	America	america	N	کیے	کرنا	bn:00003341n	True
 wf	's	's	 	 	 	 
 wf	top	top	 	 	 	 
 d000.s015.t004	climate	climate	N	اعلیٰ	اعلیٰ	bn:00019780n	False
@@ -533,7 +533,7 @@ wf	economies	economy
 wf	.	.	 	 	 	 
 wf	The	the	 	 	 	 
 wf	current	current	 	 	 	 
-d000.s017.t000	battle	battle	N	میں	میں	bn:00009080n	True
+d000.s017.t000	battle	battle	N	میں	میں	bn:00009080n	False
 wf	is	be	 	 	 	 
 wf	as	as	 	 	 	 
 wf	much	much	 	 	 	 
@@ -757,7 +757,7 @@ wf	such	such
 wf	as	as	 	 	 	 
 d000.s022.t007	China	china	N	چین	چین	bn:00016756n	True
 wf	and	and	 	 	 	 
-d000.s022.t008	India	india	N	بھارت	بھارت	bn:00010203n	False
+d000.s022.t008	India	india	N	بھارت	بھارت	bn:00010203n	True
 wf	.	.	 	 	 	 
 wf	The	the	 	 	 	 
 d000.s023.t000	talks	talk	N	مذاکرات	مذاکرہ	bn:00075965n	False
@@ -945,7 +945,7 @@ wf	away	away
 wf	a	a	 	 	 	 
 d001.s000.t000	victory	victory	N	فتح	فتح	bn:00078365n	True
 wf	in	in	 	 	 	 
-d001.s000.t001	Israel	israel	N	اسرائیل	اسرائیل	bn:00047679n	False
+d001.s000.t001	Israel	israel	N	اسرائیل	اسرائیل	bn:00047679n	True
 wf	Caja	caja	 	 	 	 
 wf	Laboral	laboral	 	 	 	 
 wf	achieved	achieve	 	 	 	 
@@ -974,7 +974,7 @@ wf	and	and
 wf	after	after	 	 	 	 
 wf	the	the	 	 	 	 
 wf	great	great	 	 	 	 
-d001.s001.t004	performance	performance	N	کارکردگی	کارکردگی	bn:00016286n	True
+d001.s001.t004	performance	performance	N	کارکردگی	کارکردگی	bn:00016286n	False
 wf	by	by	 	 	 	 
 wf	Mizra	mizra	 	 	 	 
 wf	Teltovic	teltovic	 	 	 	 
@@ -1014,7 +1014,7 @@ wf	up	up
 wf	for	for	 	 	 	 
 wf	the	the	 	 	 	 
 wf	significant	significant	 	 	 	 
-d001.s002.t001	absences	absence	N	غیر	غیر	bn:00000427n	True
+d001.s002.t001	absences	absence	N	غیر	غیر	bn:00000427n	False
 wf	of	of	 	 	 	 
 wf	Herrmann	herrmann	 	 	 	 
 wf	,	,	 	 	 	 
@@ -1117,7 +1117,7 @@ wf	Israeli	israeli
 d001.s005.t003	net	net	N	نیٹ	نیٹ	bn:00057368n	False
 wf	with	with	 	 	 	 
 wf	hot	hot	 	 	 	 
-d001.s005.t004	wrists	wrist	N	کلائیوں	کلائی	bn:00006143n	True
+d001.s005.t004	wrists	wrist	N	کلائیوں	کلائی	bn:00006143n	False
 wf	.	.	 	 	 	 
 wf	English	english	 	 	 	 
 wf	and	and	 	 	 	 
@@ -1371,7 +1371,7 @@ d001.s012.t007	end	end	N	اختتام	اختتام	bn:00030719n	False
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
 wf	third	third	 	 	 	 
-d001.s012.t008	quarter	quarter	N	چوتھائی	چوتھائی	bn:00065577n	True
+d001.s012.t008	quarter	quarter	N	چوتھائی	چوتھائی	bn:00065577n	False
 wf	(	(	 	 	 	 
 wf	57-67	57-67	 	 	 	 
 wf	)	)	 	 	 	 
@@ -1517,7 +1517,7 @@ wf	with	with
 wf	no	no	 	 	 	 
 wf	particular	particular	 	 	 	 
 wf	on	on	 	 	 	 
-d002.s001.t002	Friday	friday	N	خاص	خاص	bn:00036512n	False
+d002.s001.t002	Friday	friday	N	خاص	خاص	bn:00036512n	True
 wf	,	,	 	 	 	 
 wf	in	in	 	 	 	 
 wf	a	a	 	 	 	 
@@ -1651,7 +1651,7 @@ wf	was	be
 wf	supported	support	 	 	 	 
 wf	by	by	 	 	 	 
 wf	the	the	 	 	 	 
-d002.s006.t001	publication	publication	N	شائع	شائع	bn:00065107n	False
+d002.s006.t001	publication	publication	N	شائع	شائع	bn:00065107n	True
 wf	of	of	 	 	 	 
 wf	better	better	 	 	 	 
 wf	than	than	 	 	 	 
@@ -1717,7 +1717,7 @@ wf	the	the
 d002.s008.t000	confidence	confidence	N	اعتماد	اعتماد	bn:00021743n	True
 wf	of	of	 	 	 	 
 wf	American	american	 	 	 	 
-d002.s008.t001	consumers	consumer	N	صارفین	صارف	bn:00022095n	True
+d002.s008.t001	consumers	consumer	N	صارفین	صارف	bn:00022095n	False
 wf	has	have	 	 	 	 
 wf	clearly	clearly	 	 	 	 
 wf	bounced	bounce	 	 	 	 
@@ -1871,7 +1871,7 @@ wf	two	two
 d003.s001.t006	auctions	auction	N	دو	دو	bn:00007085n	False
 wf	that	that	 	 	 	 
 wf	concluded	conclude	 	 	 	 
-d003.s001.t007	Saturday	saturday	N	اختتام	اختتام	bn:00068696n	False
+d003.s001.t007	Saturday	saturday	N	اختتام	اختتام	bn:00068696n	True
 wf	.	.	 	 	 	 
 wf	The	the	 	 	 	 
 wf	10	10	 	 	 	 
@@ -1971,7 +1971,7 @@ wf	's	's
 wf	opening	open	 	 	 	 
 d003.s007.t004	oil industry	oil_industry	N	تیل	تیل	bn:00058741n	True
 wf	surprised	surprise	 	 	 	 
-d003.s007.t005	analysts	analyst	N	حیران	حیران	bn:00003802n	False
+d003.s007.t005	analysts	analyst	N	حیران	حیران	bn:00003802n	True
 wf	.	.	 	 	 	 
 d003.s008.t000	Iraq	iraq	N	عراق	عراق	bn:00002362n	True
 wf	finally	finally	 	 	 	 
@@ -2126,7 +2126,7 @@ wf	reached	reach
 d003.s012.t001	deals	deal	N	معاہدے	معاہدہ	bn:00008568n	False
 wf	with	with	 	 	 	 
 wf	the	the	 	 	 	 
-d003.s012.t002	ministry	ministry	N	وزارت	وزارت	bn:00055180n	True
+d003.s012.t002	ministry	ministry	N	وزارت	وزارت	bn:00055180n	False
 wf	.	.	 	 	 	 
 wf	Major	major	 	 	 	 
 d003.s013.t001	firms	firm	N	قائم	قائم	bn:00014160n	True
@@ -2267,14 +2267,14 @@ wf	per	per
 d003.s018.t003	barrel	barrel	N	بیرل	بیرل	bn:00008694n	False
 d003.s018.t004	fee	fee	N	فیس	فیس	bn:00033939n	False
 wf	the	the	 	 	 	 
-d003.s018.t005	ministry	ministry	N	وزارت	وزارت	bn:00055180n	True
+d003.s018.t005	ministry	ministry	N	وزارت	وزارت	bn:00055180n	False
 wf	was	be	 	 	 	 
 wf	willing	willing	 	 	 	 
 wf	to	to	 	 	 	 
 wf	pay	pay	 	 	 	 
 wf	for	for	 	 	 	 
 wf	boosting	boost	 	 	 	 
-d003.s018.t006	output	output	N	پیداوار	پیداوار	bn:00059788n	False
+d003.s018.t006	output	output	N	پیداوار	پیداوار	bn:00059788n	True
 wf	above	above	 	 	 	 
 wf	current	current	 	 	 	 
 d003.s018.t007	levels	level	N	سطح	سطح	bn:00025965n	False
@@ -2364,7 +2364,7 @@ wf	going	go
 wf	hand-in-hand	hand-in-hand	 	 	 	 
 wf	with	with	 	 	 	 
 wf	the	the	 	 	 	 
-d004.s004.t002	acceptance	acceptance	N	قبول	قبول	bn:00000649n	True
+d004.s004.t002	acceptance	acceptance	N	قبول	قبول	bn:00000649n	False
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
 d004.s004.t003	money	money	N	رقم	رقم	bn:00055644n	True
@@ -2488,7 +2488,7 @@ wf	on	on
 d004.s010.t000	Thursday	thursday	N	جمعرات	جمعرات	bn:00076744n	True
 wf	,	,	 	 	 	 
 wf	the	the	 	 	 	 
-d004.s010.t001	US	us	N	نے	نے	bn:00003341n	True
+d004.s010.t001	US	us	N	نے	نے	bn:00003341n	False
 d004.s010.t002	bank	bank	N	بینک	بینک	bn:00008364n	False
 wf	was	be	 	 	 	 
 wf	able	able	 	 	 	 
@@ -2548,7 +2548,7 @@ wf	typing	typing
 wf	away	away	 	 	 	 
 wf	in	in	 	 	 	 
 wf	the	the	 	 	 	 
-d005.s001.t001	courtroom	courtroom	N	میں	میں	bn:00023302n	False
+d005.s001.t001	courtroom	courtroom	N	میں	میں	bn:00023302n	True
 wf	.	.	 	 	 	 
 wf	Minute	minute	 	 	 	 
 wf	by	by	 	 	 	 
@@ -2569,7 +2569,7 @@ wf	the	the
 d005.s003.t000	end	end	N	آخر	آخر	bn:00030720n	True
 wf	,	,	 	 	 	 
 wf	the	the	 	 	 	 
-d005.s003.t001	defense	defense	N	دفاع	دفاع	bn:00025872n	False
+d005.s003.t001	defense	defense	N	دفاع	دفاع	bn:00025872n	True
 wf	says	say	 	 	 	 
 wf	,	,	 	 	 	 
 wf	there	there	 	 	 	 
@@ -2658,7 +2658,7 @@ wf	Hayes	haye
 wf	have	have	 	 	 	 
 wf	already	already	 	 	 	 
 wf	made	make	 	 	 	 
-d005.s005.t001	court	court	N	عدالت	عدالت	bn:00023301n	True
+d005.s005.t001	court	court	N	عدالت	عدالت	bn:00023301n	False
 d005.s005.t002	filings	filing	N	فائلوں	فائلہ	bn:00034444n	True
 wf	that	that	 	 	 	 
 wf	sketch	sketch	 	 	 	 
@@ -2671,7 +2671,7 @@ wf	likely	likely
 wf	to	to	 	 	 	 
 wf	occupy	occupy	 	 	 	 
 wf	the	the	 	 	 	 
-d005.s005.t005	courts	court	N	عدالتوں	عدالت	bn:00023301n	True
+d005.s005.t005	courts	court	N	عدالتوں	عدالت	bn:00023301n	False
 wf	for	for	 	 	 	 
 d005.s005.t006	years	year	N	سالوں	سال	bn:00078738n	True
 wf	.	.	 	 	 	 
@@ -2741,7 +2741,7 @@ wf	technology	technology
 wf	requires	require	 	 	 	 
 wf	new	new	 	 	 	 
 d005.s007.t004	courtroom	courtroom	N	عدالت	عدالت	bn:00023302n	True
-d005.s007.t005	rules	rule	N	قواعد	قواعد	bn:00064192n	True
+d005.s007.t005	rules	rule	N	قواعد	قواعد	bn:00064192n	False
 wf	.	.	 	 	 	 
 wf	``	``	 	 	 	 
 wf	As	as	 	 	 	 
@@ -2956,7 +2956,7 @@ d005.s014.t007	ways	way	N	حکمرانی	حکمرانی	bn:00033729n	False
 wf	of	of	 	 	 	 
 wf	communicating	communicate	 	 	 	 
 wf	from	from	 	 	 	 
-d005.s014.t008	courtrooms	courtroom	N	سے	سے	bn:00023302n	False
+d005.s014.t008	courtrooms	courtroom	N	سے	سے	bn:00023302n	True
 wf	unimagined	unimagine	 	 	 	 
 wf	at	at	 	 	 	 
 wf	the	the	 	 	 	 
@@ -3108,7 +3108,7 @@ wf	were	be
 wf	horrified	horrify	 	 	 	 
 wf	by	by	 	 	 	 
 wf	the	the	 	 	 	 
-d005.s019.t001	photographs	photograph	N	تصاویر	تصاویر	bn:00032381n	True
+d005.s019.t001	photographs	photograph	N	تصاویر	تصاویر	bn:00032381n	False
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
 d005.s019.t002	victims	victim	N	متاثرین	متاثرین	bn:00079940n	False
@@ -3216,7 +3216,7 @@ wf	the	the
 d005.s023.t003	case	case	N	معاملے	معاملہ	bn:00016403n	False
 wf	dominated	dominate	 	 	 	 
 wf	the	the	 	 	 	 
-d005.s023.t004	news	news	N	خبروں	خبر	bn:00057546n	True
+d005.s023.t004	news	news	N	خبروں	خبر	bn:00057546n	False
 wf	in	in	 	 	 	 
 wf	and	and	 	 	 	 
 wf	was	be	 	 	 	 
@@ -3226,7 +3226,7 @@ wf	the	the
 d005.s023.t006	election	election	N	انتخابی	انتخابی	bn:00030113n	False
 d005.s023.t007	campaign	campaign	N	مہم	مہم	bn:00015050n	True
 wf	by	by	 	 	 	 
-d005.s023.t008	candidates	candidate	N	امیدواروں	امیدوار	bn:00015056n	True
+d005.s023.t008	candidates	candidate	N	امیدواروں	امیدوار	bn:00015056n	False
 wf	for	for	 	 	 	 
 wf	governor	governor	 	 	 	 
 wf	and	and	 	 	 	 
@@ -3256,7 +3256,7 @@ wf	of	of
 wf	media	media	 	 	 	 
 wf	tweets	tweet	 	 	 	 
 wf	,	,	 	 	 	 
-d005.s025.t001	cameras	camera	N	کیمرے	کیمرا	bn:00015008n	False
+d005.s025.t001	cameras	camera	N	کیمرے	کیمرا	bn:00015008n	True
 wf	and	and	 	 	 	 
 d005.s025.t002	reporters	reporter	N	ہلچل	ہلچل	bn:00057562n	False
 wf	outside	outside	 	 	 	 
@@ -3301,7 +3301,7 @@ wf	the	the
 d005.s027.t002	claim	claim	N	دعویٰ	دعویٰ	bn:00019404n	True
 wf	that	that	 	 	 	 
 wf	instant	instant	 	 	 	 
-d005.s027.t003	news	news	N	خبریں	خبر	bn:00057546n	True
+d005.s027.t003	news	news	N	خبریں	خبر	bn:00057546n	False
 wf	was	be	 	 	 	 
 wf	more	more	 	 	 	 
 wf	incendiary	incendiary	 	 	 	 
@@ -3318,7 +3318,7 @@ wf	that	that
 wf	would	would	 	 	 	 
 wf	make	make	 	 	 	 
 wf	poor	poor	 	 	 	 
-d005.s027.t006	court	court	N	عدالت	عدالت	bn:00023301n	True
+d005.s027.t006	court	court	N	عدالت	عدالت	bn:00023301n	False
 d005.s027.t007	policy	policy	N	پالیسی	پالیسی	bn:00063330n	False
 wf	governing	govern	 	 	 	 
 wf	of	of	 	 	 	 
@@ -3533,7 +3533,7 @@ wf	show	show
 wf	the	the	 	 	 	 
 wf	second	second	 	 	 	 
 wf	yellow	yellow	 	 	 	 
-d006.s003.t007	card	card	N	کارڈ	کارڈ	bn:00015917n	True
+d006.s003.t007	card	card	N	کارڈ	کارڈ	bn:00015917n	False
 wf	to	to	 	 	 	 
 wf	both	both	 	 	 	 
 wf	of	of	 	 	 	 
@@ -3587,7 +3587,7 @@ wf	.	.
 wf	Finally	finally	 	 	 	 
 wf	,	,	 	 	 	 
 wf	the	the	 	 	 	 
-d006.s005.t000	committee	committee	N	کمیٹی	کمیٹی	bn:00021015n	False
+d006.s005.t000	committee	committee	N	کمیٹی	کمیٹی	bn:00021015n	True
 wf	of	of	 	 	 	 
 d006.s005.t001	discipline	discipline	N	ضبط	ضبط	bn:00022845n	True
 wf	of	of	 	 	 	 
@@ -3620,10 +3620,10 @@ d006.s006.t000	provocation	provocation	N	تحریک	تحریک	bn:00046294n	Fals
 wf	of	of	 	 	 	 
 wf	a	a	 	 	 	 
 wf	yellow	yellow	 	 	 	 
-d006.s006.t001	card	card	N	کارڈ	کارڈ	bn:00015917n	True
+d006.s006.t001	card	card	N	کارڈ	کارڈ	bn:00015917n	False
 wf	in	in	 	 	 	 
 wf	similar	similar	 	 	 	 
-d006.s006.t002	circumstances	circumstance	N	حالات	حالات	bn:00019219n	True
+d006.s006.t002	circumstances	circumstance	N	حالات	حالات	bn:00019219n	False
 wf	as	as	 	 	 	 
 wf	this	this	 	 	 	 
 wf	one	one	 	 	 	 
@@ -3694,12 +3694,12 @@ wf	(	(
 wf	that	that	 	 	 	 
 wf	in	in	 	 	 	 
 wf	its	its	 	 	 	 
-d006.s008.t006	hymn	hymn	N	گیت	گیت	bn:00004527n	False
+d006.s008.t006	hymn	hymn	N	گیت	گیت	bn:00004527n	True
 wf	presumes	presume	 	 	 	 
 wf	of	of	 	 	 	 
 d006.s008.t007	nobility	nobility	N	اشرافیہ	اشرافیہ	bn:00041354n	False
 wf	and	and	 	 	 	 
-d006.s008.t008	honor	honor	N	اعزاز	اعزاز	bn:00044654n	False
+d006.s008.t008	honor	honor	N	اعزاز	اعزاز	bn:00044654n	True
 wf	,	,	 	 	 	 
 wf	and	and	 	 	 	 
 wf	that	that	 	 	 	 
@@ -3755,7 +3755,7 @@ wf	the	the
 wf	regulation	regulation	 	 	 	 
 wf	contradicts	contradict	 	 	 	 
 wf	the	the	 	 	 	 
-d006.s009.t003	principles	principle	N	اصولوں	اصول	bn:00064077n	True
+d006.s009.t003	principles	principle	N	اصولوں	اصول	bn:00064077n	False
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
 d006.s009.t004	sport	sport	N	کھیل	کھیل	bn:00006759n	True
@@ -4020,7 +4020,7 @@ d006.s017.t001	game	game	N	کھیل	کھیل	bn:00037181n	True
 wf	,	,	 	 	 	 
 wf	because	because	 	 	 	 
 wf	the	the	 	 	 	 
-d006.s017.t002	club	club	N	کلب	کلب	bn:00020039n	True
+d006.s017.t002	club	club	N	کلب	کلب	bn:00020039n	False
 wf	will	will	 	 	 	 
 wf	not	not	 	 	 	 
 wf	be	be	 	 	 	 
@@ -4051,7 +4051,7 @@ wf	of	of
 wf	the	the	 	 	 	 
 d006.s018.t004	Championship	championship	N	شپ	شپ	bn:00017615n	False
 wf	without	without	 	 	 	 
-d006.s018.t005	cards	card	N	کارڈ	کارڈ	bn:00015917n	True
+d006.s018.t005	cards	card	N	کارڈ	کارڈ	bn:00015917n	False
 wf	that	that	 	 	 	 
 wf	could	could	 	 	 	 
 wf	threaten	threaten	 	 	 	 
@@ -4085,7 +4085,7 @@ wf	be	be
 wf	eliminated	eliminate	 	 	 	 
 wf	first	first	 	 	 	 
 wf	of	of	 	 	 	 
-d006.s019.t005	change	change	N	تبدیل	تبدیل	bn:00003125n	True
+d006.s019.t005	change	change	N	تبدیل	تبدیل	bn:00003125n	False
 wf	,	,	 	 	 	 
 wf	and	and	 	 	 	 
 wf	in	in	 	 	 	 
@@ -4104,14 +4104,14 @@ wf	the	the
 wf	second	second	 	 	 	 
 d006.s019.t011	cycle	cycle	N	سائیکل	سائیکل	bn:00024727n	False
 wf	of	of	 	 	 	 
-d006.s019.t012	cards	card	N	کارڈوں	کارڈ	bn:00015917n	True
+d006.s019.t012	cards	card	N	کارڈوں	کارڈ	bn:00015917n	False
 wf	,	,	 	 	 	 
 wf	in	in	 	 	 	 
 wf	which	which	 	 	 	 
 wf	the	the	 	 	 	 
 d006.s019.t013	suspension	suspension	N	معطلی	معطلی	bn:00075455n	True
 wf	by	by	 	 	 	 
-d006.s019.t014	card	card	N	کارڈ	کارڈ	bn:00015917n	True
+d006.s019.t014	card	card	N	کارڈ	کارڈ	bn:00015917n	False
 wf	takes	take	 	 	 	 
 d006.s019.t016	place	place	N	کیا	کرنا	bn:00051035n	True
 wf	with	with	 	 	 	 
@@ -4163,7 +4163,7 @@ d006.s021.t004	advantages	advantage	N	فائدہ	فائدہ	bn:00001561n	True
 wf	allowed	allow	 	 	 	 
 wf	by	by	 	 	 	 
 wf	the	the	 	 	 	 
-d006.s021.t005	rules	rule	N	قواعد	قواعد	bn:00064192n	True
+d006.s021.t005	rules	rule	N	قواعد	قواعد	bn:00064192n	False
 wf	.	.	 	 	 	 
 wf	Regarding	regard	 	 	 	 
 wf	this	this	 	 	 	 
@@ -4273,7 +4273,7 @@ wf	brought	bring
 wf	about	about	 	 	 	 
 wf	to	to	 	 	 	 
 wf	the	the	 	 	 	 
-d006.s026.t001	principles	principle	N	اصولوں	اصول	bn:00064077n	True
+d006.s026.t001	principles	principle	N	اصولوں	اصول	bn:00064077n	False
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
 d006.s026.t002	sport	sport	N	کھیل	کھیل	bn:00006759n	True
@@ -4307,7 +4307,7 @@ d007.s001.t000	discovery	discovery	N	دریافت	دریافت	bn:00027530n	True
 wf	of	of	 	 	 	 
 wf	a	a	 	 	 	 
 wf	strange	strange	 	 	 	 
-d007.s001.t001	bacteria	bacterium	N	بیکٹیریا	بیکٹیریا	bn:00007854n	False
+d007.s001.t001	bacteria	bacterium	N	بیکٹیریا	بیکٹیریا	bn:00007854n	True
 wf	that	that	 	 	 	 
 wf	can	can	 	 	 	 
 wf	use	use	 	 	 	 
@@ -4445,7 +4445,7 @@ wf	,	,
 wf	,	,	 	 	 	 
 d007.s006.t006	phosphorus	phosphorus	N	فاسفورس	فاسفورس	bn:00006845n	True
 wf	and	and	 	 	 	 
-d007.s006.t007	sulfur	sulfur	N	آکسیجن	آکسیجن	bn:00006846n	False
+d007.s006.t007	sulfur	sulfur	N	آکسیجن	آکسیجن	bn:00006846n	True
 wf	.	.	 	 	 	 
 wf	But	but	 	 	 	 
 wf	the	the	 	 	 	 
@@ -4801,7 +4801,7 @@ wf	The	the
 d007.s022.t000	researchers	researcher	N	محققین	محقق	bn:00047356n	True
 wf	collected	collect	 	 	 	 
 wf	the	the	 	 	 	 
-d007.s022.t001	bacteria	bacterium	N	بیکٹیریا	بیکٹیریا	bn:00007854n	False
+d007.s022.t001	bacteria	bacterium	N	بیکٹیریا	بیکٹیریا	bn:00007854n	True
 wf	known	know	 	 	 	 
 wf	as	as	 	 	 	 
 wf	GFAJ-1	gfaj-1	 	 	 	 
@@ -5174,7 +5174,7 @@ wf	a	a
 wf	big	big	 	 	 	 
 d008.s011.t002	drop	drop	N	کمی	کمی	bn:00027260n	False
 wf	in	in	 	 	 	 
-d008.s011.t003	output	output	N	پیداوار	پیداوار	bn:00059790n	False
+d008.s011.t003	output	output	N	پیداوار	پیداوار	bn:00059790n	True
 wf	last	last	 	 	 	 
 d008.s011.t004	year	year	N	سال	سال	bn:00078738n	True
 wf	.	.	 	 	 	 
@@ -5393,7 +5393,7 @@ wf	.	.
 wf	's	's	 	 	 	 
 wf	strong	strong	 	 	 	 
 wf	economic	economic	 	 	 	 
-d008.s020.t001	performance	performance	N	کارکردگی	کارکردگی	bn:00036838n	True
+d008.s020.t001	performance	performance	N	کارکردگی	کارکردگی	bn:00036838n	False
 wf	and	and	 	 	 	 
 wf	the	the	 	 	 	 
 d008.s020.t002	popularity	popularity	N	مقبولیت	مقبولیت	bn:00063592n	True
@@ -5514,7 +5514,7 @@ wf	A	a
 wf	more	more	 	 	 	 
 wf	robust	robust	 	 	 	 
 wf	economic	economic	 	 	 	 
-d008.s024.t000	performance	performance	N	کارکردگی	کارکردگی	bn:00036838n	True
+d008.s024.t000	performance	performance	N	کارکردگی	کارکردگی	bn:00036838n	False
 wf	is	be	 	 	 	 
 wf	reflected	reflect	 	 	 	 
 wf	in	in	 	 	 	 
@@ -5537,7 +5537,7 @@ d008.s024.t006	private enterprise	private_enterprise	N	کہنا	کہہنا	bn:00
 wf	is	be	 	 	 	 
 wf	indispensable	indispensable	 	 	 	 
 wf	for	for	 	 	 	 
-d008.s024.t007	development	development	N	ہے	ہے	bn:00026695n	False
+d008.s024.t007	development	development	N	ہے	ہے	bn:00026695n	True
 wf	,	,	 	 	 	 
 wf	up	up	 	 	 	 
 wf	from	from	 	 	 	 
@@ -5696,7 +5696,7 @@ d009.s000.t000	healthcare	healthcare	N	دیکھ	دیکھ	bn:00043361n	True
 d009.s000.t001	law	law	N	قانون	قانون	bn:00050249n	True
 d009.s000.t002	challengers	challenger	N	challengers	challengers	bn:00017562n	True
 wf	as	as	 	 	 	 
-d009.s000.t003	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s000.t003	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	takes	take	 	 	 	 
 d009.s000.t004	case	case	N	کیس	کیس	bn:00016403n	False
 wf	The	the	 	 	 	 
@@ -5851,7 +5851,7 @@ wf	by	by
 wf	the	the	 	 	 	 
 d009.s004.t008	time	time	N	وقت	وقت	bn:00019848n	True
 wf	the	the	 	 	 	 
-d009.s004.t009	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s004.t009	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	's	's	 	 	 	 
 d009.s004.t010	decision	decision	N	فیصلے	فیصلہ	bn:00021584n	True
 wf	is	be	 	 	 	 
@@ -5864,7 +5864,7 @@ wf	will	will
 wf	stand	stand	 	 	 	 
 wf	before	before	 	 	 	 
 wf	the	the	 	 	 	 
-d009.s005.t001	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s005.t001	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	and	and	 	 	 	 
 wf	argue	argue	 	 	 	 
 wf	that	that	 	 	 	 
@@ -5983,7 +5983,7 @@ d009.s009.t002	hotel	hotel	N	ہوٹل	ہوٹل	bn:00044967n	True
 d009.s009.t003	hours	hour	N	گھنٹوں	گھنٹہ	bn:00000127n	True
 wf	after	after	 	 	 	 
 wf	the	the	 	 	 	 
-d009.s009.t004	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s009.t004	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	's	's	 	 	 	 
 wf	over	over	 	 	 	 
 wf	the	the	 	 	 	 
@@ -6170,7 +6170,7 @@ wf	several	several
 d009.s017.t005	justices	justice	N	دعووں	دعوہ	bn:00048488n	False
 wf	that	that	 	 	 	 
 wf	the	the	 	 	 	 
-d009.s017.t006	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s017.t006	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	abides	abide	 	 	 	 
 wf	by	by	 	 	 	 
 wf	the	the	 	 	 	 
@@ -6214,7 +6214,7 @@ wf	pending	pend
 d009.s018.t003	cases	case	N	مقدمات	مقدمہ	bn:00016403n	False
 wf	before	before	 	 	 	 
 wf	the	the	 	 	 	 
-d009.s018.t004	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s018.t004	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	.	.	 	 	 	 
 wf	''	''	 	 	 	 
 wf	Their	they	 	 	 	 
@@ -6255,7 +6255,7 @@ wf	the	the
 d009.s020.t002	business	business	N	کاروبار	کاروبار	bn:00014139n	True
 wf	of	of	 	 	 	 
 wf	the	the	 	 	 	 
-d009.s020.t003	court	court	N	عدالت	عدالت	bn:00023301n	True
+d009.s020.t003	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	with	with	 	 	 	 
 wf	agenda-driven	agenda-driven	 	 	 	 
 d009.s020.t004	groups	group	N	گروپوں	گروپ	bn:00041942n	False
@@ -6377,7 +6377,7 @@ wf	22	22
 d010.s001.t000	players	player	N	کھلاڑیوں	کھلاڑی	bn:00060799n	True
 wf	called	call	 	 	 	 
 wf	in	in	 	 	 	 
-d010.s001.t001	Spain	spain	N	کھیلے	کھیلنا	bn:00031605n	False
+d010.s001.t001	Spain	spain	N	کھیلے	کھیلنا	bn:00031605n	True
 wf	,	,	 	 	 	 
 wf	ten	ten	 	 	 	 
 wf	passed	pass	 	 	 	 
@@ -6590,7 +6590,7 @@ wf	who	who
 wf	last	last	 	 	 	 
 d010.s009.t003	Saturday	saturday	N	ہفتے	ہفتہ	bn:00068696n	True
 wf	against	against	 	 	 	 
-d010.s009.t004	England	england	N	انگلینڈ	انگلینڈ	bn:00030861n	False
+d010.s009.t004	England	england	N	انگلینڈ	انگلینڈ	bn:00030861n	True
 wf	(	(	 	 	 	 
 d010.s009.t005	game	game	N	میچ	میچ	bn:00037181n	False
 wf	lost	lose	 	 	 	 
@@ -6801,7 +6801,7 @@ wf	More	more
 wf	than	than	 	 	 	 
 wf	30	30	 	 	 	 
 wf	in	in	 	 	 	 
-d010.s018.t001	Spain	spain	N	اسپین	اسپین	bn:00031605n	False
+d010.s018.t001	Spain	spain	N	اسپین	اسپین	bn:00031605n	True
 wf	have	have	 	 	 	 
 wf	Gerard	gerard	 	 	 	 
 wf	Piqué	piqué	 	 	 	 
@@ -6960,7 +6960,7 @@ wf	a	a
 d011.s000.t001	burden	burden	N	بوجھ	بوجھ	bn:00013941n	True
 wf	or	or	 	 	 	 
 wf	an	a	 	 	 	 
-d011.s000.t002	opportunity	opportunity	N	موقع	موقع	bn:00017621n	True
+d011.s000.t002	opportunity	opportunity	N	موقع	موقع	bn:00017621n	False
 wf	for	for	 	 	 	 
 wf	the	the	 	 	 	 
 d011.s000.t003	economy	economy	N	معیشت	معیشت	bn:00029678n	True
@@ -7040,7 +7040,7 @@ wf	May	may
 wf	)	)	 	 	 	 
 wf	declaring	declare	 	 	 	 
 wf	that	that	 	 	 	 
-d011.s002.t002	France	france	N	فرانس	فرانس	bn:00036202n	False
+d011.s002.t002	France	france	N	فرانس	فرانس	bn:00036202n	True
 wf	``	``	 	 	 	 
 wf	does	do	 	 	 	 
 wf	not	not	 	 	 	 
@@ -7126,7 +7126,7 @@ wf	explaining	explain
 wf	in	in	 	 	 	 
 wf	1990	1990	 	 	 	 
 wf	that	that	 	 	 	 
-d011.s005.t007	France	france	N	فرانس	فرانس	bn:00036202n	False
+d011.s005.t007	France	france	N	فرانس	فرانس	bn:00036202n	True
 wf	``	``	 	 	 	 
 wf	can	can	 	 	 	 
 wf	not	not	 	 	 	 
@@ -7385,7 +7385,7 @@ d011.s015.t003	replacements	replacement	N	جگہ	جگہ	bn:00003129n	False
 wf	of	of	 	 	 	 
 wf	,	,	 	 	 	 
 wf	local	local	 	 	 	 
-d011.s015.t004	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
+d011.s015.t004	labor	labor	N	مزدوروں	مزدور	bn:00049570n	True
 wf	,	,	 	 	 	 
 wf	exercising	exercise	 	 	 	 
 wf	in	in	 	 	 	 
@@ -7396,7 +7396,7 @@ wf	a	a
 d011.s015.t006	shortage	shortage	N	کمی	کمی	bn:00025916n	True
 wf	of	of	 	 	 	 
 wf	local	local	 	 	 	 
-d011.s015.t007	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
+d011.s015.t007	labor	labor	N	مزدوروں	مزدور	bn:00049570n	True
 wf	.	.	 	 	 	 
 wf	Unskilled	unskilled	 	 	 	 
 d011.s016.t000	immigrants	immigrant	N	تارکین	تارکین	bn:00046019n	False
@@ -7409,7 +7409,7 @@ wf	do	do
 wf	not	not	 	 	 	 
 wf	attract	attract	 	 	 	 
 wf	local	local	 	 	 	 
-d011.s016.t002	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
+d011.s016.t002	labor	labor	N	مزدوروں	مزدور	bn:00049570n	True
 wf	and	and	 	 	 	 
 wf	the	the	 	 	 	 
 wf	most	most	 	 	 	 
@@ -7579,14 +7579,14 @@ d011.s021.t004	European countries	european_country	N	کا	کا	bn:00031903n	True
 wf	.	.	 	 	 	 
 wf	The	the	 	 	 	 
 d011.s022.t000	World	world	N	ورلڈ	ورلڈ	bn:00029424n	False
-d011.s022.t001	Labor	labor	N	لیبر	لیبر	bn:00049570n	False
+d011.s022.t001	Labor	labor	N	لیبر	لیبر	bn:00049570n	True
 d011.s022.t002	Organisation	organisation	N	آرگنائزیشن	آرگنائزیشن	bn:00001423n	False
 wf	estimates	estimate	 	 	 	 
 wf	that	that	 	 	 	 
 wf	for	for	 	 	 	 
 d011.s022.t003	example	example	N	مثال	مثال	bn:00016401n	True
 wf	in	in	 	 	 	 
-d011.s022.t004	Germany	germany	N	جرمنی	جرمنی	bn:00026684n	False
+d011.s022.t004	Germany	germany	N	جرمنی	جرمنی	bn:00026684n	True
 wf	,	,	 	 	 	 
 wf	an	a	 	 	 	 
 d011.s022.t005	immigrant	immigrant	N	وطن	وطن	bn:00046019n	False
@@ -7825,7 +7825,7 @@ wf	the	the
 d012.s006.t001	parties	party	N	پارٹیوں	پارٹی	bn:00060837n	False
 wf	going	go	 	 	 	 
 wf	to	to	 	 	 	 
-d012.s006.t002	court	court	N	عدالت	عدالت	bn:00023301n	True
+d012.s006.t002	court	court	N	عدالت	عدالت	bn:00023301n	False
 wf	,	,	 	 	 	 
 wf	''	''	 	 	 	 
 wf	said	say	 	 	 	 
@@ -7972,7 +7972,7 @@ wf	financial	financial
 d012.s016.t002	companies	company	N	کمپنیوں	کمپنی	bn:00021286n	False
 wf	when	when	 	 	 	 
 wf	the	the	 	 	 	 
-d012.s016.t003	US	us	N	کو	کو	bn:00003341n	True
+d012.s016.t003	US	us	N	کو	کو	bn:00003341n	False
 wf	property	property	 	 	 	 
 wf	bubble	bubble	 	 	 	 
 wf	exploded	explode	 	 	 	 
@@ -8056,7 +8056,7 @@ wf	of	of
 wf	having	have	 	 	 	 
 wf	taken	take	 	 	 	 
 wf	in	in	 	 	 	 
-d012.s021.t001	US	us	N	کو	کو	bn:00003341n	True
+d012.s021.t001	US	us	N	کو	کو	bn:00003341n	False
 d012.s021.t002	lenders	lender	N	دہندگان	دہندہ	bn:00050659n	True
 d012.s021.t003	Fannie Mae	fannie_mae	N	فینی	فینی	bn:00033638n	True
 wf	and	and	 	 	 	 
@@ -8102,7 +8102,7 @@ wf	the	the
 wf	Frankfurt-based	frankfurt-based	 	 	 	 
 d012.s023.t001	bank	bank	N	بینک	بینک	bn:00008364n	False
 wf	take	take	 	 	 	 
-d012.s023.t002	responsibility	responsibility	N	ذمہ	ذمہ	bn:00029239n	True
+d012.s023.t002	responsibility	responsibility	N	ذمہ	ذمہ	bn:00029239n	False
 wf	for	for	 	 	 	 
 wf	``	``	 	 	 	 
 wf	substantial	substantial	 	 	 	 

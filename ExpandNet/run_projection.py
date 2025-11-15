@@ -158,6 +158,9 @@ with open(args.token_info_file, 'w', encoding='utf-8') as f:
                     f.write(tok_id + '\t' + tok + '\t' + source + '\t' + src_pos + '\t' + t_candidate + '\t'  + candidate + '\t' + bn + '\t' + str(is_valid_translation(source, candidate, dict_wik)) + '\n')
                     if is_valid_translation(source, candidate, dict_wik):
                         senses.add((bn, candidate))
+                    else:
+                        # print(f"Source: {source}, Candidate: {candidate}, Sense: {bn} --- NO VALID TRANSLATION IN DICT")
+                        print(f"{source}, {candidate}")
 
 print(f"Found {len(senses)} unique sense-lemma pairs")
 

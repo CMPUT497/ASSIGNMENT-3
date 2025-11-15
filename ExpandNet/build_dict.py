@@ -28,6 +28,9 @@ def main():
             if fpath.endswith(".tsv"):
                 tsv_files.append(fpath)
 
+    print(f"Number of .tsv files: {len(tsv_files)}")
+    print(f"Number of .txt files: {len(txt_files)}")
+    
     rows = {}
     for file_path in txt_files:
         with open(file_path, "r", encoding="utf-8") as f:
