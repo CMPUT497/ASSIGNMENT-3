@@ -8,7 +8,7 @@ def main():
         count = 0
         for line in data:
             line = line.split()
-            if '%' in line[0] and ':' in line[0]:
+            if 'bn:' in line[0]:
                 id = line[0]
                 count = 0
                 results[id] = []
