@@ -74,13 +74,13 @@ print("Loading dataset...")
 df_src = xml_utils.process_dataset(args.src_data, args.src_gold)
 print(f"Dataset loaded: {len(df_src)} rows")
 # Write df_src to a JSON file
-df_src.to_json("df_src.json", orient="records", force_ascii=False, lines=True)
+# df_src.to_json("df_src.json", orient="records", force_ascii=False, lines=True)
 
 print("Loading alignment data...")
 df_sent = pd.read_csv(args.alignment_file, sep='\t')
 print(f"Alignment loaded: {len(df_sent)} sentences")
 # Write df_sent to a JSON file
-df_sent.to_json("df_sent.json", orient="records", force_ascii=False, lines=True)
+# df_sent.to_json("df_sent.json", orient="records", force_ascii=False, lines=True)
 
 # Load the dictionary.
 print("Loading dictionary...")
