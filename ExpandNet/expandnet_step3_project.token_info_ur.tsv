@@ -210,9 +210,6 @@ d011.s012.t015	employment	employment	N	اور	اور	bn:00030616n	False
 d011.s012.t016	countries	country	N	میں	میں	bn:00023236n	False
 d011.s012.t017	immigrants	immigrant	N	والے	والا	bn:00046019n	False
 d011.s015.t003	replacements	replacement	N	جگہ	جگہ	bn:00003129n	False
-d011.s015.t004	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
-d011.s015.t007	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
-d011.s016.t002	labor	labor	N	مزدوروں	مزدور	bn:00049570n	False
 d011.s020.t006	proportion	proportion	N	بڑا	بڑا	bn:00064767n	False
 d011.s020.t007	immigrants	immigrant	N	انترنیٹڈ	انترنیٹڈ	bn:00046019n	False
 d011.s020.t010	winners	winner	N	نوبل	نوبل	bn:00079944n	False
