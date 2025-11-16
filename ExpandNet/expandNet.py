@@ -41,7 +41,7 @@ def main():
         "--src_data", "Data\\xlwsd_se13.xml",
         "--src_gold", "Data\\se13.key.txt",
         # "--dictionary", "dictionaries\\en_ur_dict.tsv",
-        "--dictionary", "dictionaries\\urdu_dictionary.tsv",
+        "--dictionary", "dictionaries\\merged_dictionary.tsv",
         "--alignment_file", "expandnet_step2_align_ur.out.tsv",
         "--output_file", "expandnet_step3_project_ur.out.tsv",
         "--token_info_file", "expandnet_step3_project.token_info_ur.tsv",
