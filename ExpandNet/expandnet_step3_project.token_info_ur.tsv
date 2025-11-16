@@ -29,7 +29,6 @@ d000.s022.t008	India	india	N	بھارت	بھارت	bn:00010203n	False
 d000.s023.t001	urgency	urgency	N	صورتحال	صورتحال	bn:00079330n	False
 d000.s024.t003	halls	hall	N	میں	میں	bn:00042663n	False
 d000.s024.t004	meetings	meeting	N	اجلاسوں	اجلاس	bn:00041948n	False
-d000.s024.t005	news conferences	news_conference	N	پریس	پریس	bn:00057552n	False
 d000.s024.t007	week	week	N	والے	والا	bn:00014711n	False
 d000.s026.t002	Wednesday	wednesday	N	روز	روز	bn:00054897n	False
 d001.s000.t001	Israel	israel	N	اسرائیل	اسرائیل	bn:00047679n	False
@@ -169,7 +168,6 @@ d009.s001.t002	question	question	N	متنازعہ	متنازعہ	bn:00043267n	Fa
 d009.s001.t005	law	law	N	بھال	بھال	bn:00050249n	False
 d009.s001.t007	dinner	dinner	N	ایک	ایک	bn:00027206n	False
 d009.s001.t009	case	case	N	کیا	کرنا	bn:00016403n	False
-d009.s001.t010	high court	high_court	N	سامنے	سامنے	bn:00044064n	False
 d009.s003.t001	issue	issue	N	مذکورہ	مذکورہ	bn:00047690n	False
 d009.s006.t002	firms	firm	N	دو	دو	bn:00014160n	False
 d009.s008.t004	litigation	litigation	N	جوئی	جوئی	bn:00048507n	False
@@ -189,7 +187,6 @@ d010.s002.t003	games	game	N	50	50	bn:00037181n	False
 d010.s003.t002	players	player	N	22	22	bn:00060799n	False
 d010.s003.t004	game	game	N	دوستانہ	دوستانہ	bn:00037181n	False
 d010.s003.t005	today	today	N	میچ	میچ	bn:00077463n	False
-d010.s004.t001	number one	number_one	N	کے	کا	bn:00034737n	False
 d010.s004.t002	top	top	N	ماہانہ	ماہانہ	bn:00000942n	False
 d010.s004.t003	record	record	N	طویل	طویل	bn:00066576n	False
 d010.s004.t005	games	game	N	الاقوامی	الاقوامی	bn:00037181n	False
