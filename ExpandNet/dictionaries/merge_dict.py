@@ -4,7 +4,7 @@ import pandas as pd
 df1 = pd.read_csv("merged_dictionary.tsv", sep="\t", header=None, names=["english", "urdu"])
 
 # --- Load the second dictionary (has headers) ---
-df2 = pd.read_csv("added_words.tsv", sep="\t")
+df2 = pd.read_csv("clean_dictionary2.tsv", sep="\t")
 
 # Remove header row from df2 just in case
 df2 = df2[df2['english'] != 'english']
