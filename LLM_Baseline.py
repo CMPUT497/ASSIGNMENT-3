@@ -48,9 +48,9 @@ def find_best_matching_word(definition):
     Given INPUT prompt: You are a bilingual lexicon expert.
     Given a dictionary definition: "burden", produce the single word in {TARGET_LANGUAGE} that best matches this definition. 
     Provide only the one {TARGET_LANGUAGE} word without explanations!
-    DO NOT PROVIDE ANY OTHER OUPUT BUT THE URDU WORD!!
+    DO NOT PROVIDE ANY OTHER OUTPUT BUT THE URDU WORD!!
     Expected OUTPUT response from you: بوج
-    DO NOT REPEAT THE INPUT PRROMPT IN YOUR OUPUT ONLY GIVE THE URDU WORD!"""
+    DO NOT REPEAT THE INPUT PROMPT IN YOUR OUPUT ONLY GIVE THE URDU WORD!"""
 
     # on-device inference with gemma model, expecting a single word per prompt/response
     inputs = tokenizer(prompt, return_tensors="pt", truncation=True).to(model.device)
