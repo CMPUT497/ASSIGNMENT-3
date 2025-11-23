@@ -22,7 +22,9 @@ def main():
             urdu_word = urdu_words
             urdu_word = ', '.join(urdu_word)
             urdu_word = urdu_word[:-1]
-            fout.write(f"{key}\t{urdu_word}\n")
+            # fout.write(f"{key}\t{urdu_word}\n")
+            if urdu_word != "":
+                print(key, urdu_word, sep='\t', file=fout)
 
 
 if __name__ == "__main__":
