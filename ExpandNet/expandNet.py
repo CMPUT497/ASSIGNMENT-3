@@ -31,7 +31,7 @@ def main():
         "--lang_src", "en",
         "--lang_tgt", "ur",
         "--aligner", "dbalign",
-        "--dict", "dictionaries\\merged_dictionary.tsv",
+        "--dict", "dictionaries\\combined_dict.tsv",
         "--output_file", "expandnet_step2_align_ur.out.tsv"
     ])
 
@@ -40,7 +40,7 @@ def main():
         PYTHON_EXE, "run_projection.py",
         "--src_data", "Data\\xlwsd_se13.xml",
         "--src_gold", "Data\\se13.key.txt",
-        "--dictionary", "dictionaries\\merged_dictionary.tsv",
+        "--dictionary", "dictionaries\\combined_dict.tsv",
         "--alignment_file", "expandnet_step2_align_ur.out.tsv",
         "--output_file", "expandnet_step3_project_ur.out.tsv",
         "--token_info_file", "expandnet_step3_project.token_info_ur.tsv",
