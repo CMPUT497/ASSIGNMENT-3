@@ -13,6 +13,15 @@ nlp = spacy.load("en_core_web_lg")
 def lemmatize_en(word):
     return nlp(word)[0].lemma_.lower().replace(" ", "_")
 
+def detect_word_language(word):
+    word = word.strip()
+    if not word:
+        return "unknown"
+    try:
+        return detect(word)
+    except LangDetectException:
+        return "ur"
+
 def main(): 
     txt_files = []
     tsv_files = []
@@ -52,7 +61,7 @@ def main():
                 en = lemmatize_en(row[0])
                 ur_tokens = row[1].strip().split()
                 for ur in ur_tokens:
-                    lang_code = detect(ur)
+                    lang_code = detect_word_language(ur)
                     if lang_code != 'ur':
                         continue
                     if en not in rows:
