@@ -4,13 +4,11 @@ from re import I
 import spacy
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
+from langdetect import detect
 
 PREFER_POS_ORDER = (wn.NOUN, wn.ADJ, wn.VERB, wn.ADV)
 
 nlp = spacy.load("en_core_web_lg")
-
-def normalize_urdu(text):
-    return text.replace(" ", "_")
 
 def lemmatize_en(word):
     return nlp(word)[0].lemma_.lower().replace(" ", "_")
@@ -39,7 +37,6 @@ def main():
                 if not line or " " not in line:
                     continue
                 ur, en = line.split(" ", 1)
-                ur = normalize_urdu(ur)
                 en = lemmatize_en(en)
                 if en not in rows:
                     rows[en] = []
@@ -55,20 +52,22 @@ def main():
                 en = lemmatize_en(row[0])
                 ur_tokens = row[1].strip().split()
                 for ur in ur_tokens:
-                    ur_norm = normalize_urdu(ur)
+                    lang_code = detect(ur)
+                    if lang_code != 'ur':
+                        continue
                     if en not in rows:
                         rows[en] = []
-                    if ur_norm not in rows[en]:
-                        rows[en].append(ur_norm)
+                    if ur not in rows[en]:
+                        rows[en].append(ur)
 
-    output_file = f"{root_dir}/dictionaries/en_ur_dict.tsv"
+    output_file = f"{root_dir}/dictionaries/combined_dict.tsv"
     with open(output_file, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter="\t")
-        for ur, en_list in rows.items():
-            en_str = " ".join(en_list)
-            writer.writerow([ur, en_str])
+        for en, ur_list in rows.items():
+            ur_str = " ".join(ur_list)
+            writer.writerow([en, ur_str])
 
-    print(f"en_ur_dict.tsv created at {output_file}")
+    print(f"combined_dict.tsv created at {output_file}")
 
 
 if __name__ == "__main__":
