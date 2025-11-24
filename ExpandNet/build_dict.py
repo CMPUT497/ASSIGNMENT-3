@@ -4,7 +4,7 @@ from re import I
 import spacy
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
-from langdetect import detect
+from langdetect import detect, LangDetectException
 
 PREFER_POS_ORDER = (wn.NOUN, wn.ADJ, wn.VERB, wn.ADV)
 
