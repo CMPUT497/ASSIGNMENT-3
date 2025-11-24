@@ -143,7 +143,7 @@ with open(args.token_info_file, 'w', encoding='utf-8') as f:
             tok = src_tok[i]
             tok_id = sent_id + f".t{tok_num:03d}"
             if not str(bn)[:3] == 'bn:':
-            #     f.write('wf' + '\t' + tok + '\t' + source + '\t' + ' ' + '\t'  + ' ' + '\t' + ' ' + '\t' + ' ' + '\n')
+                f.write('wf' + '\t' + tok + '\t' + source + '\t' + ' ' + '\t'  + ' ' + '\t' + ' ' + '\t' + ' ' + '\n')
                 continue
             tok_num += 1
             alignment_indices = get_alignments(ali, i)
@@ -161,7 +161,7 @@ with open(args.token_info_file, 'w', encoding='utf-8') as f:
                 for t_candidate, candidate in zip(t_candidates, candidates):
                     src_pos = bn[-1].upper()
                     source = remove_chars_regex(source)
-                    # f.write(tok_id + '\t' + tok + '\t' + source + '\t' + src_pos + '\t' + t_candidate + '\t'  + candidate + '\t' + bn + '\t' + str(is_valid_translation(source, candidate, dict_wik)) + '\n')
+                    f.write(tok_id + '\t' + tok + '\t' + source + '\t' + src_pos + '\t' + t_candidate + '\t'  + candidate + '\t' + bn + '\t' + str(is_valid_translation(source, candidate, dict_wik)) + '\n')
                     if is_valid_translation(source, candidate, dict_wik):
                         senses.add((bn, candidate))
                     else:

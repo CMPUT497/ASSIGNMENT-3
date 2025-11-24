@@ -25,22 +25,22 @@ def main():
     # run_command([PYTHON_EXE, "build_dict.py"])
 
     # Step 3: Run run_align.py - already done
-    run_command([
-        PYTHON_EXE, "run_align.py",
-        "--translation_df_file", "expandnet_step1_translate_ur.out.tsv",
-        "--lang_src", "en",
-        "--lang_tgt", "ur",
-        "--aligner", "dbalign",
-        "--dict", "dictionaries/combined_dict.tsv",
-        "--output_file", "expandnet_step2_align_ur.out.tsv"
-    ])
+    # run_command([
+    #     PYTHON_EXE, "run_align.py",
+    #     "--translation_df_file", "expandnet_step1_translate_ur.out.tsv",
+    #     "--lang_src", "en",
+    #     "--lang_tgt", "ur",
+    #     "--aligner", "dbalign",
+    #     "--dict", "dictionaries/cleaned_dictionary.tsv",
+    #     "--output_file", "expandnet_step2_align_ur.out.tsv"
+    # ])
 
     # Step 4: Run run_projection.py
     run_command([
         PYTHON_EXE, "run_projection.py",
         "--src_data", "Data/xlwsd_se13.xml",
         "--src_gold", "Data/se13.key.txt",
-        "--dictionary", "dictionaries/combined_dict.tsv",
+        "--dictionary", "dictionaries/cleaned_dictionary.tsv",
         "--alignment_file", "expandnet_step2_align_ur.out.tsv",
         "--output_file", "expandnet_step3_project_ur.out.tsv",
         "--token_info_file", "expandnet_step3_project.token_info_ur.tsv",

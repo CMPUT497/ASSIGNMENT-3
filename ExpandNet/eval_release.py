@@ -84,12 +84,12 @@ synsets_with_correct_sense = set()
 synsets_present_in_output = set()
 for (bnid, lemma) in senses_for_eval:
     if bnid in gold_bnid_to_lemmas and lemma in gold_bnid_to_lemmas[bnid]:
-        # print("GOOD_SENSE", bnid, lemma, sep='\t')
+        print("GOOD_SENSE", bnid, lemma, sep='\t')
         correct_senses += 1
         synsets_with_correct_sense.add(bnid)
         synsets_present_in_output.add(bnid)
     else:
-        # print("BAD_SENSE", bnid, lemma, sep='\t')
+        print("BAD_SENSE", bnid, lemma, sep='\t')
         synsets_present_in_output.add(bnid)
 
 num_synsets_with_correct_sense = len(synsets_with_correct_sense)

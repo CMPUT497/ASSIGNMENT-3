@@ -29,24 +29,19 @@ def main():
         sentence_id = text_obj.attrib["id"]
         english_text = " ".join([w.text for w in text_obj.findall("./*")])
         english_text = preprocess_text(english_text)
-
         ur = translator(english_text)[0]["translation_text"]
-
         doc = nlp(ur)
 
         tokens_list = []
         lemmas_list = []
         
-
         for sent in doc.sentences:
             for word in sent.words:
                 tokens_list.append(word.text)
                 lemmas_list.append(word.lemma)
 
-
         translation_token = " ".join(tokens_list)
         translation_lemma = " ".join(lemmas_list)
-
 
         lemma = " ".join(english_text.lower().split())
 
