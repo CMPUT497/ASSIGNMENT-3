@@ -9,9 +9,9 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{titlesec}
+\usepackage{hyperref}
 \usepackage[english, bidi=basic]{babel}
 \babelfont[urdu]{rm}{Amiri} % Urdu font setup
-
 
 \setlength{\parskip}{0pt}
 
@@ -23,89 +23,82 @@
   \end{tabular}
 }
 
-
-\title{Assignment 3: Concepts \\ ExpandNet Implementation of English-to-Urdu Sense Projection}
+\title{Assignment 3: Concepts \\ ExpandNet Implementation for English-to-Urdu Sense Projection}
 
 \begin{document}
 \maketitle
 
 \section{Introduction}
-In this assignment, we implemented sense projection on Urdu words, from English sentences using ExpandNet. We performed translation with a translator \textbf{NLLB}. We then used \textbf{dbalign} along with a bilingual dictionary (en-ur) that we found via Wikiextractor \cite{ylonen2022wiktextract} and other dictionary resources (cite all of them); with this combined dictionary and translations, we obtain alignment from English to Urdu words on all the sentences. Finally, we project the senses of the English tokens onto the Urdu lemmas based on the alignment. These three steps, which are part of ExpandNet, were used to extend the idea of ExpandNet for the en-ur language pair, demonstrating that this method can be extended to low-resource languages. More information on the given data is included in the Appendex under subsection Data Description.
+We implement an English-to-Urdu sense projection pipeline using \textbf{ExpandNet}. Specifically, we translate English sentences into Urdu using the \textbf{facebook/nllb-200-distilled-600M} model. 
+For alignment, we employ \textbf{DBAlign} with a bilingual English-Urdu dictionary, which combines lexical resources from \textbf{Kaikki.org} and the \textbf{GoldenDict} project. 
+Alignments between English and Urdu tokens are obtained, and senses from English tokens are projected onto corresponding Urdu lemmas based on these alignments. 
+This workflow enables ExtendNet to function for the English-Urdu pair, showcasing the adaptability of the sense projection approach to low-resource languages. 
+Further dataset details are provided in the Appendix (\hyperref[sec:Data Description]{Data Description}).
 
 \section{LLM Baseline}
-The LLM baseline was implemented using the model \textbf{google/gemma-3-4b-it}, where we gave it an input of an English BabelNet synset gloss (definition) and asked it to generate a single-word Urdu translation for each gloss using a large language model that best fits that definition. The procedure is as follows:
+Our baseline investigates whether a large language model (LLM) can accurately determine the primary sense of an English gloss and generate an appropriate Urdu translation.
+The baseline uses \textbf{google/gemma-3-4b-it}\footnote{\url{https://huggingface.co/google/gemma-3-4b-it}}, prompting the model with an English BabelNet synset gloss (definition) and 
+tasking it to produce a single Urdu word that best matches the definition.
 
-The model used is \textbf{google/gemma-3-4b-it}, accessed via the Hugging Face \texttt{transformers} library. Authentication is managed by supplying an \texttt{HF\_TOKEN} using the \texttt{huggingface\_hub} API. The model is loaded locally with automatic GPU support if available, or defaults to CPU otherwise. Tokenization and text generation both leverage the \texttt{transformers} library, ensuring efficient inference. Generation is performed on-device, so no calls to external APIs are made once the model is downloaded.
+The \textbf{google/gemma-3-4b-it} model is accessed via the Hugging Face \texttt{transformers} library, supporting efficient, on-device text generation. 
+All synsets are read from \texttt{se\_gloss.tsv} (BabelNet ID and gloss). For each gloss, a prompt requests the best single Urdu word translation. 
+Details of the prompt and rationale are included in the Appendix (\hyperref[sec:LLM Baseline Prompt]{LLM Baseline Prompt Design}).
 
-The code implemented here first reads all English glosses and their associated synset IDs from the file \texttt{se\_gloss.tsv}. For each gloss, it sends a prompt to the LLM requesting the best single Urdu word to match the definition. The prompt used is included in the Appendix under subsection LLM Baseline Prompt:
-
-This prompt design was iteratively refined to minimize off-target completions and suppress verbosity that LLMs might otherwise default to. The concise style and explicit example helped steer the model towards a consistent template-based output format.
-The model's Urdu response is collected and stored, mapping each BabelNet ID to its Urdu word from the LLM's response.
-The prompt is carefully engineered to output only a single Urdu word as the response, avoiding extraneous text, but the model, at times, outputs the input prompt along with the word. Hence, the output is saved in a temporary file before postprocessing.
-The postprocessing implemented organizes the model's output by cleaning the input prompt from the output and storing only the Urdu word as expected.
-
-Each synset is uniquely specified by its BabelNet ID and corresponding gloss. For every BabelNet ID, our LLM baseline was prompted to generate a single Urdu word that most accurately captured the meaning of the gloss and, by extension, the synset. We deliberately designed the setup to request only one Urdu word per synset, to reduce the chance of hallucinated or verbose outputs from the model. This approach also targeted the core challenge of evaluating whether the LLM could accurately determine the primary sense conveyed by the gloss and select a fitting translation in Urdu. Although generating multiple words (such as a list of synonyms) might provide a broader sense inventory per synset, it introduces ambiguity and a higher risk of imprecise sense matching, which complicates evaluation and undermines direct sense projection. Therefore, by constraining the output to a single word, we simplified interpretation, ensured a one-to-one mapping for analysis, and established a stricter test of the LLM's sense comprehension and lexical precision.
-\subsection{Examples, Errors, and Notable Cases}
-Our qualitative analysis identified four critical failure modes in the LLM output. First, the model frequently defaulted to generic verbs like ``\foreignlanguage{urdu}{کرنا}'' (to do) instead of specific content words. Second, we observed significant input leakage, exemplified by outputs like ``you:coerce'' where English formatting contaminated the target text. Third, the model disregarded lemma constraints, producing multi-word phrases or complex agentive nouns such as ``\foreignlanguage{urdu}{جدوجہدکرنےوالا}'' (\textit{struggler}) rather than concise roots. Most critically, the model suffered from morphological fragmentation, repeatedly outputting ``\foreignlanguage{urdu}{دری}'' (dari) a non-lexical suffix or sub-word unit across disparate Sense IDs, failing to construct complete, valid Urdu lemmas.
+Manual inspection revealed four major failure modes in the LLM outputs:
+\begin{enumerate}
+    \item The model often defaulted to generic verbs (e.g., ``\foreignlanguage{urdu}{کرنا}''(to do)), rather than specific content words.
+    \item Output contamination by English formatting (e.g., ``you:coerce'').
+    \item Failure to adhere to lemma constraints, producing multi-word phrases or agentive forms (e.g., ``\foreignlanguage{urdu}{جدوجہدکرنےوالا}''; `struggler') rather than root lemmas.
+    \item Morphological fragmentation, most common with outputs like ``\foreignlanguage{urdu}{دری}'' (dari), a non-lexical suffix or sub-word unit, resulting in invalid Urdu lemmas.
+\end{enumerate}
 
 \section{Method}
-We followed the instructions given in the ExpandNet github page \footnote{\url{https://github.com/UAlberta-NLP/ExpandNet}} in order to implement the ExpandNet code for projecting senses from english to urdu. This code allows only projection of BabelNetIDs and not WordNet IDs although the code was changed and experimented with WordNetIDs to ensure that it was possible to do so. The projection results from the WordNetIDs were identical to the BabelNetIDs.
-In the expandNet code provided, the authors perform filteration at the last step before projection where they check for a valid translation by checking if the english source token and the urdu lemma are a pair in the dictionary, however since our dictionary coverage was not extensive we missed certain english tokens from the sentences that are not present in the dictionary. To ease this constraint we make the assumption that if the english word is not present in the dictionary then we assume it is the right translation and project the senses to the urdu lemma for such pairs.
-\subsection{Translation}
-We continues to use the translation from assignment 2. We experimented with an urdu pretrained LLM \textbf{large-traversaal/Alif-1.0-8B-Instruct} \cite{shafique2025alif} and \textbf{google/gemma-3-4b-it}. Both proved to be less impressive than the translation from \textbf{NLLB} \cite{koishekenov-etal-2023-memory}. Some of the common error from the other 2 methods included wrong use of urdu words in sentences along with changed meaning of sentences. This was verified from our native speaker (Sahir), and we continued with the translations from assignment 2.
-\subsection{Alignment} 
-To ensure robust alignment between English source tokens and Urdu translations, we constructed a comprehensive bilingual dictionary by merging two primary resources to maximize lexical coverage. First, we utilized the open-source dictionary files available through the GoldenDict project\footnote{\url{http://goldendict.org/dictionaries.php}}. Second, rather than running extraction scripts manually, we leveraged the pre-extracted Urdu dictionary available through Kaikki.org\footnote{\url{https://kaikki.org/dictionary/Urdu/words/index.html}}, which provides machine-readable structured data derived from Wiktionary using the Wiktextract tool \cite{ylonen2022wiktextract}. These resources were concatenated to form a single unified dictionary for use with \texttt{dbalign}.
+We follow ExpandNet's official guidelines\footnote{\url{https://github.com/UAlberta-NLP/ExpandNet}} to project senses from English to Urdu. 
+The released code supports only BabelNet IDs but was adapted to process WordNet IDs, for which we confirmed results were identical. 
+The final filtering step of ExpandNet's code checks if an English token and its Urdu lemma are paired in the dictionary before projecting senses. 
+However, due to the limited coverage of our Urdu dictionary, some source tokens were missing. 
+To mitigate this, we relax this constraint by the following assumption: if an English word is absent from the dictionary, we assume a correct translation and project its sense to the corresponding Urdu lemma.
 
+\subsection{Translation}
+We use sentence translations from Assignment 2. We also experimented with Urdu LLMs, including \textbf{large-traversaal/Alif-1.0-8B-Instruct} \cite{shafique2025alif} and \textbf{google/gemma-3-4b-it}, 
+but these models produced inferior results compared to \textbf{facebook/nllb-200-distilled-600M}\footnote{\url{https://huggingface.co/facebook/nllb-200-distilled-600M}} \cite{koishekenov-etal-2023-memory}. 
+Typical errors in LLM outputs included incorrect Urdu usage and shifts in sentence meaning, as confirmed by our native speaker(L1) and co-author.
+
+\subsection{Alignment}
+To improve English-Urdu alignment, we constructed a comprehensive bilingual dictionary by merging two primary resources: 
+(1) open-source dictionary files from GoldenDict\footnote{\url{http://goldendict.org/dictionaries.php}}; 
+(2) a machine-readable Urdu dictionary from Kaikki.org\footnote{\url{https://kaikki.org/dictionary/Urdu/words/index.html}}, produced by Wiktextract \cite{ylonen2022wiktextract}. 
+These were concatenated, cleaned (removing filler words), and used with \textbf{DBAlign}\footnote{\url{https://github.com/UAlberta-NLP/ExpandNet/blob/main/align_utils.py}} for alignment.
 
 \subsection{Filtering}
-The dictionary that was used to check for valid translations was the same one that we used in our alignment. We check if the pair of english source token and urdu lemma exists in the dictionary and if so only then do we project the senses onto the Urdu lemmas. However we ease this constraint by making the above assumption of correct sense projections for urdu lemmas whos corresponding english source token is not present in the dictionary.
+The same merged dictionary is used to confirm valid English-to-Urdu token pairs before projecting senses. 
+If an English token is not found in the dictionary, we assume a valid projection (as above).
 
-\section{Analysis} (NEED TO UPDATE THIS - RIGHT NOW LLM OUTPUT)
+\section{Analysis}
+Evaluation showed that \textbf{98} senses annotated by ExpandNet were correct out of \textbf{715} evaluated. 
+While many incorrect senses may be plausible in alternate contexts, they most often reflected contextual ambiguity rather than translation defects.
 
-\subsection{Sense Annotation Quality}
-Based on the evaluation, 100 senses annotated by ExpandNet were correct out of 732 evaluated. Many incorrect senses could still be plausible in different contexts, suggesting contextual ambiguity rather than purely incorrect mappings.
+Manual analysis of a 10-sentence sample found: 39 projected senses, of which 27 were correct and 12 incorrect. 
+Most errors were due to misalignment; e.g., English nouns (including entities) aligned with Urdu filler words, such as ``report'' aligned to ``\foreignlanguage{urdu}{ایک}'' ('one'), 
+or ``American'' mapped to ``\foreignlanguage{urdu}{میں}'' ('in'). Multi-word concepts also presented problems (``death penalty'' sometimes reduced to ``\foreignlanguage{urdu}{موت}'' ('death')).
 
-However, our manual qualitative analysis of the 10-sentence sample revealed mixed results. From the 10 sentences, ExpandNet projected a total of 39 senses, out of which 27 were found to be correct. The remaining 12 projections were incorrect. Upon investigating these errors, we found that the majority of incorrect projections involved English content words specifically nouns, company names, and country names being wrongly aligned to Urdu filler words. For instance, the noun ``report'' was incorrectly aligned to the function word ``\foreignlanguage{urdu}{ایک}'' (one), and the adjective ``American'' was mapped to the preposition ``\foreignlanguage{urdu}{میں}'' (in). Additionally, we observed issues with multi-word concepts; for instance, terms like ``death penalty'' require multiple words in Urdu to convey the full meaning, yet the system often projected only a single word like ``\foreignlanguage{urdu}{موت}'' (death), rendering the translation incomplete or incorrect.
+Alignment errors were the main source: over-general senses, inconsistent mapping, and filler words in dictionary entries led to projection failures, especially for low-resource languages like Urdu.
 
-\subsection{Error Sources}
-Most errors appear to stem from alignment and sense–translation mismatches. Recurring issues include selecting overly general senses and inconsistent mapping to Urdu lemmas. Improving sense disambiguation and enforcing stricter alignment constraints could reduce these errors.
+Our error analysis indicates noise in the merged dictionary: a high frequency of function words and stopwords resulted in alignments between English content words and Urdu fillers, producing many spurious projections.
 
-Our analysis suggests this was caused by noise in our combined dictionary. The dictionary appeared to contain a high frequency of filler words and stop words, which \texttt{dbalign} matched against English content words when a direct translation was missing. These errors confirm that while the translation was often adequate, the alignment step forced connections to high-frequency filler words, resulting in zero valid sense projections for the sample.
+\section{Results}
+Quantitatively, ExpandNet outperforms the LLM baseline: ExpandNet achieved a sense-level F1 of 9.9, compared to 3.1 for the LLM baseline. The full table of results appears in the Appendix (\hyperref[table:results]{Table~1}).
 
-\subsection{LLM vs.\ ExpandNet}
-Compared to the manually annotated ExpandNet output, the LLM baseline performed worse. ExpandNet achieved an F1 of 10.0 (sense-level), while the LLM baseline achieved 3.1.
+\section{Conclusion and Discussion}
+We implemented and analyzed two approaches for projecting English semantic senses onto Urdu: ExpandNet and a generative LLM baseline. 
+While both face challenges typical of low-resource languages, \textbf{ExpandNet produced consistently better results} (F1 of 10.0 versus 3.1 for the LLM).
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{lccc}
-\hline
-\textbf{System} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
-\hline
-LLM Baseline (Sense)  & 4.2 & 2.5 & 3.1 \\
-ExpandNet (Sense)  & 13.7 & 7.9  & 10.0 \\
-\hline
-LLM Baseline (Synset) & 4.2 & 4.1 & 4.2 \\
-ExpandNet (Synset) & 15.9 & 12.6 & 14.1 \\
-\hline
-\end{tabular}
+The core limitation for ExpandNet proved to be \textbf{alignment quality}: reliance on incomplete dictionaries means contentful English words may be mapped to Urdu fillers, limiting sense projection accuracy. 
+The LLM, despite producing some fluent translations, failed to meet strict requirements for sense disambiguation, by returning single-word lemmas out of given context.
 
-\vspace{0.5em}
-\begin{tabular}{lc}
-\textbf{System} & \textbf{Core Coverage} \\
-\hline
-ExpandNet (Synset) & 5.2 \\
-LLM Baseline (Synset) & 6.1 \\
-\hline
-\end{tabular}
-\end{table}
-
-\section{Impression}
-Overall performance is low for both systems, but ExpandNet is noticeably stronger. It shows better precision and recall, especially at the synset level. Weaknesses include context confusion and sense overgeneration. Future work should focus on improved sense disambiguation, tighter alignment methods, and leveraging contextual embeddings for Urdu. Better dictionary with higher coverage as well as better translations.
-
-\section{Conclusion}
-In this assignment, we implemented and evaluated two approaches for projecting English semantic senses onto Urdu words: the statistical ExpandNet method and a generative LLM baseline. Our results demonstrate that while low-resource languages like Urdu present significant challenges for both approaches, \textbf{ExpandNet remains the superior method}, achieving an F1 score of 10.0 compared to the LLM's 3.1.
-
-The manual annotation revealed that the critical bottleneck for ExpandNet is \textbf{alignment quality}. The reliance on static dictionaries resulted in English content words being mapped to Urdu stop words and fillers, leading to immediate sense projection failures. The LLM, while capable of fluent translation, failed to adhere to the strict lexical constraints of sense projection, often producing definitions rather than lemmas. Future work to improve this pipeline should focus on cleaning the dictionary of non-content filler words to resolve the misalignment issues identified in our analysis.
+Although both systems performed modestly, ExpandNet achieved higher precision and recall, especially at synset level. 
+Addressing these core limitations will require improved alignment methods, more comprehensive dictionaries, and higher-quality parallel data which is a common need across low-resource languages. 
+Without better resources, the effectiveness of sense projection approaches will remain constrained.
 
 \bibliographystyle{acl_natbib}
 \bibliography{custom}
@@ -113,22 +106,25 @@ The manual annotation revealed that the critical bottleneck for ExpandNet is \te
 \section{Appendix}
 
 \subsection{Data Description}
-To begin with, we are given a set of files as part of the data:
+\label{sec:Data Description}
+The dataset provided includes the following files:
 \begin{itemize}\setlength\itemsep{0em}
-    \item \textbf{se\_gold\_ur.tsv}: A tab-separated file containing Urdu lemmas mapped to BabelNet synset IDs. Some rows are empty (no projection possible). This serves as gold data for evaluation.
-    \item \textbf{corebnout.txt}: A file with a filtered list of BabelNet IDs, used for restricting the evaluation and for sense selection.
-    \item \textbf{se\_gloss.tsv}: A tab-separated file containing BabelNet synset IDs and their English glosses (short definitions). Used to provide sense information for evaluation and for the LLM Baseline's prompt.
-    \item \textbf{se13\_sentences.tsv}: Contains the original English sentences. Each row typically corresponds to a unique sentence and its sentence ID.
-    \item \textbf{se13\_tokens.tsv}: Lists the individual tokens (word/s) in each sentence, along with their sentence ID and token information including type, lemma, POS, raw text, and instance ID. Essential for projections and alignments.
-    \item \textbf{se13.key.tsv}: The gold-standard key for the English, specifying the correct sense(s) for each instance token in the English sentences.
-    \item \textbf{xlwsd\_se13.xml}: An XML file packaging all the above information (sentences, tokenization, and sense annotations) for convenient input to WSD systems and evaluators.
+    \item \textbf{se\_gold\_ur.tsv}: Urdu lemmas mapped to BabelNet synset IDs; empty rows indicate missing projections (gold standard).
+    \item \textbf{corebnout.txt}: Filtered BabelNet IDs for restricted evaluation and sense selection.
+    \item \textbf{se\_gloss.tsv}: BabelNet synset IDs with English glosses (definitions); drives LLM prompting and evaluation.
+    \item \textbf{se13\_sentences.tsv}: Original English sentences, one row per sentence (with ID).
+    \item \textbf{se13\_tokens.tsv}: Per-token information (sentence ID, token, lemma, POS, etc.); required for alignment and projections.
+    \item \textbf{se13.key.tsv}: Gold standard English sense annotations for every instance token.
+    \item \textbf{xlwsd\_se13.xml}: XML package of sentences, tokenization, and all sense annotations for input to WSD systems.
 \end{itemize}
 
-\subsection{LLM Baseline Prompt}
-The prompt used for the LLM Baseline was:
+\subsection{LLM Baseline Prompt Design}
+\label{sec:LLM Baseline Prompt}
+The LLM baseline used the following prompt :
 
-\textit{"You are a bilingual lexicon expert.
-Given a dictionary definition: \texttt{place holder for BabelNet gloss}, produce the single word in Urdu that best matches this definition. 
+\begin{quote}
+\textit{"You are a bilingual lexicon expert. 
+Given a dictionary definition: \texttt{[placeholder for BabelNet gloss]}, produce the single word in Urdu that best matches this definition. 
 Provide only the one Urdu word without explanations!
 DO NOT PROVIDE ANY OTHER OUPUT BUT THE URDU WORD!!
 Example (Do not include OUTPUT in your response, here INPUT and OUTPUT are only present to help you distinguish INPUT and OUTPUT, they should not be present in the your response), 
@@ -139,5 +135,48 @@ Provide only the one Urdu word without explanations!
 DO NOT PROVIDE ANY OTHER OUTPUT BUT THE URDU WORD!!
 Expected OUTPUT response from you: \foreignlanguage{urdu}{بوج۔}
 DO NOT REPEAT THE INPUT PROMPT IN YOUR OUTPUT, ONLY GIVE THE URDU WORD!"}
+\end{quote}
+
+The prompt design was iteratively refined to minimize off-target completions and suppress verbosity that LLMs might otherwise default to. The concise style and explicit example helped steer the model towards a consistent template-based output format.
+The prompt was carefully engineered to output only a single Urdu word as the response, avoiding extraneous text, but the model's response always contained the input prompt along with the Urdu word. The input prompt was the only extraneous information that the LLM included in it's output.
+Hence, the output from the LLM is saved in a temporary file and set to a postprocessing step where the model's response was cleaned by removing the input prompt from the output and storing only the Urdu word.
+
+\begin{center}
+\vspace*{-\topskip}
+\vspace*{-\baselineskip}
+\begingroup
+\setlength{\abovecaptionskip}{5pt}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\floatsep}{0pt}
+\setlength{\textfloatsep}{0pt}
+\begin{minipage}{\textwidth}
+\centering
+\begin{tabular}{lccc}
+\hline
+\textbf{System}(Sense) & \textbf{P} & \textbf{R} & \textbf{F1} \\
+\hline
+LLM Baseline  & 4.2 & 2.5 & 3.1 \\
+ExpandNet  & \textbf{13.7} & \textbf{7.7}  & \textbf{9.9} \\
+\hline
+\textbf{System}(Synset) & \textbf{P} & \textbf{R} & \textbf{F1} \\
+\hline
+LLM Baseline & 4.2 & 4.1 & 4.2 \\
+ExpandNet & \textbf{15.8} & \textbf{12.4} & \textbf{13.9} \\
+\hline
+\end{tabular}
+\hspace{2em}
+\begin{tabular}{lc}
+\hline
+\textbf{System}(Synset) & \textbf{Core Coverage} \\
+\hline
+LLM Baseline & \textbf{6.1} \\
+ExpandNet & 5.1 \\
+\hline
+\end{tabular}
+\captionof{table}{Performance comparison of LLM Baseline and ExpandNet systems on Urdu sense projection. The top two sections report precision(P), recall(R), and F1 at the sense and synset levels respectively. The bottom section reports core synset coverage in \%.}
+\label{table:results}
+\end{minipage}
+\endgroup
+\end{center}
 
 \end{document}

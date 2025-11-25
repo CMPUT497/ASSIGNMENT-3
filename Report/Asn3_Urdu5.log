@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.30)  23 NOV 2025 18:43
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.9.30)  24 NOV 2025 21:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,26 +436,26 @@ Package babel Info: The following font families will use the default
 )
 \openout1 = `Asn3_Urdu5.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -494,18 +494,18 @@ LaTeX Font Info:    ... okay on input line 29.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 29.
+Package hyperref Info: Link coloring ON on input line 28.
 (./Asn3_Urdu5.out) (./Asn3_Urdu5.out)
 \@outlinefile=\write3
 \openout3 = `Asn3_Urdu5.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 29.
-Package microtype Info: Applying patch `item' on input line 29.
-Package microtype Info: Applying patch `toc' on input line 29.
-Package microtype Info: Applying patch `eqnum' on input line 29.
-Package microtype Info: Applying patch `footnote' on input line 29.
-Package microtype Info: Applying patch `verbatim' on input line 29.
-LaTeX Info: Redefining \microtypesetup on input line 29.
+LaTeX Info: Redefining \microtypecontext on input line 28.
+Package microtype Info: Applying patch `item' on input line 28.
+Package microtype Info: Applying patch `toc' on input line 28.
+Package microtype Info: Applying patch `eqnum' on input line 28.
+Package microtype Info: Applying patch `footnote' on input line 28.
+Package microtype Info: Applying patch `verbatim' on input line 28.
+LaTeX Info: Redefining \microtypesetup on input line 28.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -527,64 +527,64 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup5
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 29.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 29.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 29.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 29.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 29.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 29.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 29.
-LaTeX Font Info:    Redeclaring math accent \check on input line 29.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 29.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 29.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 29.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 29.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 29.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 28.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 28.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 28.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 28.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 28.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 28.
+LaTeX Font Info:    Redeclaring math accent \check on input line 28.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 28.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 28.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 28.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 29.
+(Font)              `operators' in the math version `normal' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 29.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 28.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 29.
+(Font)              `operators' in the math version `bold' on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 29.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 29.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 29.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 29.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 29.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 29.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 28.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 29.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 29.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 29.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 28.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 29.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 28.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 29.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 30
+(Font)              <6> on input line 29.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 29
 .
 
 (c:/texlive/2025/texmf-dist/tex/latex/base/ulasy.fd
@@ -593,7 +593,7 @@ File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ! Undefined control sequence.
 <recently read> \text 
                       
-l.30 \maketitle
+l.29 \maketitle
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -604,7 +604,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@author ... \text {girigowd@ualberta.ca} & \text 
                                                   {smomin1@ualberta.ca} \\ \...
-l.30 \maketitle
+l.29 \maketitle
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -615,7 +615,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \text 
                       
-l.30 \maketitle
+l.29 \maketitle
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -626,7 +626,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \@author ...\text {University of Alberta} & \text 
                                                   {University of Alberta} \e...
-l.30 \maketitle
+l.29 \maketitle
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -635,46 +635,60 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Package natbib Warning: Citation `ylonen2022wiktextract' on page 1 undefined on
- input line 33.
+Underfull \hbox (badness 4752) in paragraph at lines 32--37
+\TU/lmr/m/n/10.95 We implement an English-to-Urdu sense
+ []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--37
+\TU/lmr/m/n/10.95 projection pipeline using \TU/lmr/bx/n/10.95 ExpandNet\TU/lmr
+/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 32--37
+\TU/lmr/m/n/10.95 into Urdu using the \TU/lmr/bx/n/10.95 facebook/nllb-200-
+ []
+
+
+Underfull \hbox (badness 4673) in paragraph at lines 32--37
+\TU/lmr/m/n/10.95 Urdu dictionary, which combines lexical
+ []
+
+
+Underfull \hbox (badness 4543) in paragraph at lines 32--37
+\TU/lmr/m/n/10.95 from English tokens are projected onto
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 40.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 40.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 40.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
-[]\TU/lmr/m/n/10.95 The model used is \TU/lmr/bx/n/10.95 google/gemma-
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+[][][][][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][] [] [][][][][][] [
+]$
  []
 
 
-Underfull \hbox (badness 3386) in paragraph at lines 38--39
-\TU/lmr/bx/n/10.95 3-4b-it\TU/lmr/m/n/10.95 , accessed via the Hugging Face
+Underfull \hbox (badness 1173) in paragraph at lines 39--42
+\TU/lmr/m/n/10.95 guage model (LLM) can accurately deter-
  []
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 38--39
-\TU/lmtt/m/n/10.95 transformers \TU/lmr/m/n/10.95 library. Authentication is
- []
-
-
-Underfull \hbox (badness 1331) in paragraph at lines 38--39
-\TU/lmr/m/n/10.95 the \TU/lmtt/m/n/10.95 huggingface_hub \TU/lmr/m/n/10.95 API.
- The model is
+Underfull \hbox (badness 3271) in paragraph at lines 43--46
+\TU/lmr/m/n/10.95 generation. All synsets are read from
  []
 
 
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[1
-
-
-
-] (c:/texlive/2025/texmf-dist/tex/generic/babel/locale/ur/babel-urdu.tex)
+(c:/texlive/2025/texmf-dist/tex/generic/babel/locale/ur/babel-urdu.tex)
 Package babel Info: Importing data for urdu
 (babel)             from babel-ur.ini. Reported on input line 49.
 Package babel Info: Hyphen rules for 'urdu' set to \l@english
@@ -704,86 +718,165 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `Amiri' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 52.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 52.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 52.
+
+Underfull \hbox (badness 1087) in paragraph at lines 49--50
+[]\TU/lmr/m/n/10.95 The model often defaulted to generic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--64
+[][][][][]$[][][][][] [] [] [] [][][][][][][][][][][] [] [][] [] [][][][][][][]
+[] []$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
+\TU/lmr/m/n/10.95 LLMs, including \TU/lmr/bx/n/10.95 large-traversaal/Alif-
+ []
+
+
+Underfull \hbox (badness 5077) in paragraph at lines 63--66
+\TU/lmr/bx/n/10.95 1.0-8B-Instruct \TU/lmr/m/n/10.95 ([][]Shafique et al.[][], 
+[][]2025[][])
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
+\TU/lmr/m/n/10.95 and \TU/lmr/bx/n/10.95 google/gemma-3-4b-it\TU/lmr/m/n/10.95 
+, but these
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
+\TU/lmr/m/n/10.95 to \TU/lmr/bx/n/10.95 facebook/nllb-200-distilled-600M[][][][
+][]
+ []
 
 
 
-Package natbib Warning: Citation `shafique2025alif' on page 2 undefined on inpu
-t line 55.
+[1
 
 
-Package natbib Warning: Citation `koishekenov-etal-2023-memory' on page 2 undef
-ined on input line 55.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--57
+]
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
 [][][][][]$[][][][][] [] [] [] [][][][][][] [] [][][] [] [][][][][][][][][][] [
 ] [][][][] [] [][][][][] []$
  []
 
 
-Package natbib Warning: Citation `ylonen2022wiktextract' on page 2 undefined on
- input line 57.
+Underfull \hbox (badness 10000) in paragraph at lines 71--71
+[][][][][]$[][][][][] [] [] [] [][][][][][] [] [][][] [] [][][][][][][][][][][]
+[][] [] [][][][][][][][][] []$
+ []
+
+
+Underfull \hbox (badness 2237) in paragraph at lines 68--72
+\TU/lmr/m/n/10.95 structed a comprehensive bilingual dictio-
+ []
+
+
+Underfull \hbox (badness 3209) in paragraph at lines 68--72
+\TU/lmr/m/n/10.95 open-source dictionary files from Golden-
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 81--84
+\TU/lmr/m/n/10.95 found: 39 projected senses, of which 27
+ []
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 81--84
+\TU/lmr/m/n/10.95 were correct and 12 incorrect. Most er-
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 85--86
+[]\TU/lmr/m/n/10.95 Alignment errors were the main source:
+ []
+
+
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 99--102
+\TU/lmr/m/n/10.95 tionaries, and higher-quality parallel data
+ []
+
+(./Asn3_Urdu5.bbl
+Underfull \hbox (badness 1087) in paragraph at lines 6--13
+\TU/lmr/m/n/10 Vassilina Nikoulina. 2023.  [][]Memory-efficient
+ []
 
 
 
 [2]
-Overfull \hbox (43.09587pt too wide) in paragraph at lines 80--91
- [][] 
+Underfull \hbox (badness 6691) in paragraph at lines 16--23
+[]\TU/lmr/m/n/10 Muhammad Ali Shafique, Kanwal Mehreen,
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-(./Asn3_Urdu5.bbl
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.4 \end{thebibliography}
-                         
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+Underfull \hbox (badness 1642) in paragraph at lines 16--23
+\TU/lmr/m/n/10 and Hamza Farooq. 2025.  [][]Alif: Advanc-
+ []
 
 )
+Underfull \hbox (badness 1270) in paragraph at lines 116--117
+[]\TU/lmr/bx/n/10.95 se13_tokens.tsv\TU/lmr/m/n/10.95 : Per-token informa-
+ []
 
-[3]
-Underfull \hbox (badness 1264) in paragraph at lines 123--124
-[]\TU/lmr/bx/n/10.95 se13.key.tsv\TU/lmr/m/n/10.95 : The gold-standard key
+
+Underfull \hbox (badness 1199) in paragraph at lines 117--118
+[]\TU/lmr/bx/n/10.95 se13.key.tsv\TU/lmr/m/n/10.95 : Gold standard English
+ []
+
+
+Underfull \hbox (badness 2393) in paragraph at lines 137--138
+[]\TU/lmr/m/it/10.95 ”You are a bilingual lexicon ex-
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 137--138
+\TU/lmr/m/it/10.95 pert. Given a dictionary defini-
  []
 
 
 
 
-Package natbib Warning: There were undefined citations.
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 176.
+See the caption package documentation for explanation.
+
+
+Overfull \hbox (236.15797pt too wide) in paragraph at lines 152--180
+ $[]$ 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[4] (./Asn3_Urdu5.aux)
+[3]
+
+
+
+[4
+
+] (./Asn3_Urdu5.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `Asn3_Urdu5.out' has not changed.
-(rerunfilecheck)             Checksum: 03014EBCADA3290F40ECEC23207AAE47;1955.
+(rerunfilecheck)             Checksum: CDD401436B58155E672D122814955041;1355.
  ) 
 Here is how much of TeX's memory you used:
- 16724 strings out of 468389
- 321135 string characters out of 5444297
- 834652 words of memory out of 5000000
- 45022 multiletter control sequences out of 15000+600000
- 635149 words of font info for 91 fonts, out of 8000000 for 9000
+ 16750 strings out of 468389
+ 321794 string characters out of 5444297
+ 835503 words of memory out of 5000000
+ 45047 multiletter control sequences out of 15000+600000
+ 635157 words of font info for 92 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 87i,16n,109p,1091b,452s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,16n,109p,1007b,540s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Asn3_Urdu5.pdf (4 pages).

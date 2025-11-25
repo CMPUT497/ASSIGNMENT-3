@@ -1,4 +1,32 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{3}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Koishekenov et~al.(2023)Koishekenov, Berard, and
+  Nikoulina}]{koishekenov-etal-2023-memory}
+Yeskendir Koishekenov, Alexandre Berard, and Vassilina Nikoulina. 2023.
+\newblock \href {https://doi.org/10.18653/v1/2023.acl-long.198}
+  {Memory-efficient {NLLB}-200: Language-specific expert pruning of a massively
+  multilingual machine translation model}.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 3567--3585,
+  Toronto, Canada. Association for Computational Linguistics.
+
+\bibitem[{Shafique et~al.(2025)Shafique, Mehreen, Arham, Amjad, Butt, and
+  Farooq}]{shafique2025alif}
+Muhammad~Ali Shafique, Kanwal Mehreen, Muhammad Arham, Maaz Amjad, Sabur Butt,
+  and Hamza Farooq. 2025.
+\newblock \href {https://arxiv.org/abs/2510.09051} {Alif: Advancing urdu large
+  language models via multilingual synthetic data distillation}.
+\newblock \emph{arXiv preprint arXiv:2510.09051}.
+\newblock Accepted to the EMNLP 2025 Workshop on Multilingual Representation
+  Learning (MRL).
+
+\bibitem[{Ylonen(2022)}]{ylonen2022wiktextract}
+Tatu Ylonen. 2022.
+\newblock \href {https://aclanthology.org/2022.lrec-1.140} {Wiktextract:
+  Wiktionary as machine-readable structured data}.
+\newblock In \emph{Proceedings of the Thirteenth Language Resources and
+  Evaluation Conference}, pages 1317--1325, Marseille, France. European
+  Language Resources Association.
 
 \end{thebibliography}
