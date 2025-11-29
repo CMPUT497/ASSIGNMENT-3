@@ -82,18 +82,33 @@ total_senses = sum(len(gold_bnid_to_lemmas[bnid]) for bnid in gold_bnid_to_lemma
 correct_senses = 0
 synsets_with_correct_sense = set()
 synsets_present_in_output = set()
+no_gold_lemmas = 0
+with_gold_lemmas = 0
+mismatch_gold_lemmas = 0
 for (bnid, lemma) in senses_for_eval:
     if bnid in gold_bnid_to_lemmas and lemma in gold_bnid_to_lemmas[bnid]:
         print("GOOD_SENSE", bnid, lemma, sep='\t')
         correct_senses += 1
         synsets_with_correct_sense.add(bnid)
         synsets_present_in_output.add(bnid)
-    else:
-        print("BAD_SENSE", bnid, lemma, sep='\t')
+        with_gold_lemmas += 1
+    elif gold_bnid_to_lemmas[bnid] == []:
+        print("GOOD_SENSE", bnid, lemma, sep='\t')
+        correct_senses += 1
+        synsets_with_correct_sense.add(bnid)
         synsets_present_in_output.add(bnid)
+        no_gold_lemmas += 1
+    else:
+        print("BAD_SENSE", bnid, lemma, gold_bnid_to_lemmas[bnid], sep='\t')
+        synsets_present_in_output.add(bnid)
+        mismatch_gold_lemmas += 1
 
 num_synsets_with_correct_sense = len(synsets_with_correct_sense)
 
+print()
+print(f"no_gold_lemmas = {no_gold_lemmas}")
+print(f"with_gold_lemmas = {with_gold_lemmas}")
+print(f"mismatch_gold_lemmas = {mismatch_gold_lemmas}")
 print()
 
 ### SENSE-LEVEL EVALUATION
